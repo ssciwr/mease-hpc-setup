@@ -5,19 +5,23 @@ work-in-progress setup guide & installation scripts for running https://github.c
 ## MLS&WISO Cluster
 
 ### Initial setup
-To load the necessary modules, activate the environment & set environment variables, do
+To get started, after logging into the cluster, do
 ```
 source /gpfs/bwfor/work/ws/hd_uk239-measelab/init.sh
 ```
-If you want this to be done every time you log on, add the above line to `~/.bashrc`
+You should then be in the `measelab` conda environment, with these programs installed & on path:
+- conda
+- matlab
+- mease-lab-to-nwb
+- kilosort 2.5
 
-Note: all dependencies have for now been installed to this temporary workspace (which all users in `bw20g013` should have read/write access to):
-```
-/gpfs/bwfor/work/ws/hd_uk239-measelab
-```
+If you want this to be done every time you log on, add the above line to the file `~/.bashrc`
+
+Note: all dependencies have for now been installed to this temporary workspace `/gpfs/bwfor/work/ws/hd_uk239-measelab`
+ (which all users in `bw20g013` should have read/write access to)
 
 ### SDS
-To get SDS access type
+To get SDS access on the cluster type
 ```
 kinit
 ```
