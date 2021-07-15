@@ -1,6 +1,7 @@
-# mease-hpc-setup
+# Mease Lab HPC Setup
 
-work-in-progress setup guide & installation scripts for running https://github.com/lkeegan/mease-lab-to-nwb on HPC
+Work-in-progress setup guide & installation scripts for
+running [mease-lab-to-nwb](https://github.com/lkeegan/mease-lab-to-nwb) on HPC.
 
 ## MLS&WISO Cluster
 
