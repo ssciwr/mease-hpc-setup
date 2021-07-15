@@ -16,6 +16,3 @@ rm v2.5.tar.gz
 cd Kilosort-2.5/CUDA
 matlab -nodesktop -nosplash -r "mexGPUall;quit"
 cd ../../
-
-# tell spikeinterface where it's installed
-export KILOSORT2_5_PATH=$(pwd)/Kilosort-2.5
