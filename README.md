@@ -5,19 +5,18 @@ work-in-progress setup guide & installation scripts for running https://github.c
 ## MLS&WISO Cluster
 
 ### Initial setup
-All dependencies have been installed to a temporary workspace
-```
-/gpfs/bwfor/work/ws/hd_uk239-measelab
-```
-
-To put them in your path & to load the necessary modules, do
+To load the necessary modules, activate the environment & set environment variables, do
 ```
 source /gpfs/bwfor/work/ws/hd_uk239-measelab/init.sh
 ```
 If you want this to be done every time you log on, add the above line to `~/.bashrc`
 
-### SDS
+Note: all dependencies have for now been installed to this temporary workspace (which all users in `bw20g013` should have read/write access to):
+```
+/gpfs/bwfor/work/ws/hd_uk239-measelab
+```
 
+### SDS
 To get SDS access type
 ```
 kinit
@@ -30,8 +29,7 @@ The files are located at
 ```
 
 ### Interactive use
-
-To run an interactive job (i.e. log on directly to the HPC node and run commands there):
+To run an interactive job (i.e. log on directly to a HPC node and run commands there):
 
 ```
 srun --partition=gpu-single --ntasks=1 --time=0:30:00 --nodes=1 --ntasks-per-node=1 --cpus-per-gpu=1 --mem=64gb --gres=gpu:RTX2080:1 --pty /bin/bash

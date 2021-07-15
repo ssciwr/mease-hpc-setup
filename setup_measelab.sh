@@ -1,7 +1,6 @@
-# go to measelab workspace
-cd $(ws_find measelab)
+cd $1
 
-#workaround git ssl isse
+#workaround for git ssl isse
 export GIT_SSL_NO_VERIFY=true
 
 # clone mease-lab-to-nwb
@@ -12,7 +11,7 @@ cd mease-lab-to-nwb
 conda env create -f mease-env.yml
 
 # activate env
-source ~/miniconda3/etc/profile.d/conda.sh
+source miniconda3/etc/profile.d/conda.sh
 conda activate measelab
 
 # install
