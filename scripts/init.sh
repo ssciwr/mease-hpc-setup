@@ -4,6 +4,7 @@
 module load math/matlab/R2021a
 
 # tell spikeinterface where sorters are installed
+export KILOSORT_PATH=/gpfs/bwfor/work/ws/hd_uk239-measelab/Kilosort-1.0
 export KILOSORT2_PATH=/gpfs/bwfor/work/ws/hd_uk239-measelab/Kilosort-2.0
 export KILOSORT2_5_PATH=/gpfs/bwfor/work/ws/hd_uk239-measelab/Kilosort-2.5
 
