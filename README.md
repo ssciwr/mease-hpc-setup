@@ -14,13 +14,15 @@ You should then be in the `measelab` conda environment, with these programs inst
 - conda
 - matlab
 - mease-lab-to-nwb
-- kilosort
+- [Herdingspikes2](https://github.com/mhhennig/hs2)
+- [HDSort](https://git.bsse.ethz.ch/hima_public/HDsort)
+- [IronClust](https://github.com/jamesjun/ironclust)
+- [Kilosort](https://github.com/MouseLand/Kilosort)
   - 1.0
   - 2.0
   - 2.5
   - 3.0 (git master)
-- herdingspikes
-- spyking-circus 
+- [SpykingCircus](https://spyking-circus.readthedocs.io/)
 
 If you want this to be done every time you log on, add the above line to the file `~/.bashrc`
 
@@ -50,7 +52,8 @@ This asks for 30mins with 1 cpu, 1 RTX2080 GPU, and 64GB of ram.
 Other GPU types available are listed here:
 https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Hardware#Coprocessor_Nodes
 
-Once the job starts you will be logged into the machine, and will have to activate the measelab environment again:
+Once the job starts you will be logged into the machine, if you didn't add
+the source line to your `~/.bashrc` file you will have to run it again manually.
 
 ### Batch jobs
 
