@@ -36,6 +36,8 @@ bash setup_tridesclous.sh $INSTALL
 
 bash setup_waveclus.sh $INSTALL
 
+bash setup_yass.sh $INSTALL
+
 # init script for users
 
 cp init.sh $INSTALL/init.sh
