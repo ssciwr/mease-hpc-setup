@@ -1,9 +1,5 @@
 cd $1
 
-# init conda
-source miniconda3/etc/profile.d/conda.sh
-
-# activate env
-conda activate measelab
+source init.sh
 
 pip install mountainsort4

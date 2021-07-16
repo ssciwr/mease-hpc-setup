@@ -1,10 +1,16 @@
 # script to be sourced by users
 
-# make matlab available
+# make matlab available & set version
 module load math/matlab/R2021a
 
-# make cuda available
-module load devel/cuda/11.2
+# make cuda available & set version
+module load devel/cuda/10.2
+
+# make recent gcc available & set version
+module load compiler/gnu/10.2
+
+# workaround for git ssl isse
+export GIT_SSL_NO_VERIFY=true
 
 # tell spikeinterface where sorters are installed
 export KILOSORT_PATH=/gpfs/bwfor/work/ws/hd_uk239-measelab/Kilosort-1.0

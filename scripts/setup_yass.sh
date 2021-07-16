@@ -1,18 +1,6 @@
 cd $1
 
-# make cuda available
-module load devel/cuda/11.2
-
-# init conda
-source miniconda3/etc/profile.d/conda.sh
-
-# activate env
-conda activate measelab
-
-# workaround for git ssl isse
-#NOTE: not yet working
-
-export GIT_SSL_NO_VERIFY=true
+source init.sh
 
 # download YASS (no release yet: using git master)
 git clone https://github.com/paninski-lab/yass
@@ -22,15 +10,7 @@ cd yass
 pip install .
 
 # install pytorch
-conda install pytorch -y
+conda install -y pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch-lts
 
-# compile CUDA code
-cd src/gpu_bspline_interp
-python setup.py install --force
-cd ..
-cd gpu_rowshift
-python setup.py install --force
-cd ../..
-
-# re-install yass
-pip install .
+# NOTE: yass GPU code compiled in compile_gpu.sh
+# NOTE: this needs to run on a node with the GPU!

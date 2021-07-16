@@ -8,7 +8,13 @@ bash setup_conda.sh $INSTALL
 
 bash setup_measelab.sh $INSTALL
 
+# init script for users (also used by the rest of the setup scripts below)
+
+cp init.sh $INSTALL/init.sh
+
 # sorters
+
+bash setup_yass.sh $INSTALL
 
 bash setup_combinato.sh $INSTALL
 
@@ -35,10 +41,3 @@ bash setup_spyking_circus.sh $INSTALL
 bash setup_tridesclous.sh $INSTALL
 
 bash setup_waveclus.sh $INSTALL
-
-# yass script not yet working: skip for now
-# bash setup_yass.sh $INSTALL
-
-# init script for users
-
-cp init.sh $INSTALL/init.sh
