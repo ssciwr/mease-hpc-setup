@@ -14,19 +14,21 @@ You should then be in the `measelab` conda environment, with these programs inst
 - conda
 - matlab
 - mease-lab-to-nwb
-- [HDSort](https://git.bsse.ethz.ch/hima_public/HDsort)
-- [Herdingspikes2](https://github.com/mhhennig/hs2)
-- [IronClust](https://github.com/jamesjun/ironclust)
-- [Kilosort](https://github.com/MouseLand/Kilosort)
-  - 1.0
-  - 2.0
-  - 2.5
-  - 3.0 (git master)
-- [Klusta](https://github.com/kwikteam/klusta)
-- [Mountainsort4](https://github.com/flatironinstitute/mountainsort)
-- [SpykingCircus](https://spyking-circus.readthedocs.io/)
-- [Tridesclous](https://tridesclous.readthedocs.io/)
-- [Waveclus](https://github.com/csn-le/wave_clus)
+- various sorters
+    - [HDSort](https://git.bsse.ethz.ch/hima_public/HDsort)
+    - [Herdingspikes2](https://github.com/mhhennig/hs2)
+    - [IronClust](https://github.com/jamesjun/ironclust)
+    - [Kilosort](https://github.com/MouseLand/Kilosort)
+      - 1.0
+      - 2.0
+      - 2.5
+      - 3.0 (git master)
+    - [Klusta](https://github.com/kwikteam/klusta)
+    - [Mountainsort4](https://github.com/flatironinstitute/mountainsort)
+    - [SpykingCircus](https://spyking-circus.readthedocs.io/)
+    - [Tridesclous](https://tridesclous.readthedocs.io/)
+    - [Waveclus](https://github.com/csn-le/wave_clus)
+    - [Combinato](https://github.com/jniediek/combinato)
 
 If you want this to be done every time you log on, add the above line to the file `~/.bashrc`
 

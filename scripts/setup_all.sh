@@ -10,6 +10,8 @@ bash setup_measelab.sh $INSTALL
 
 # sorters
 
+bash setup_combinato.sh $INSTALL
+
 bash setup_hdsort.sh $INSTALL
 
 bash setup_herdingspikes2.sh $INSTALL

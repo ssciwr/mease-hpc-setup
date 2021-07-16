@@ -14,6 +14,8 @@ export KILOSORT3_PATH=/gpfs/bwfor/work/ws/hd_uk239-measelab/Kilosort
 export HDSORT_PATH=/gpfs/bwfor/work/ws/hd_uk239-measelab/HDsort
 export IRONCLUST_PATH=/gpfs/bwfor/work/ws/hd_uk239-measelab/ironclust
 export WAVECLUS_PATH=/gpfs/bwfor/work/ws/hd_uk239-measelab/wave_clus
+export COMBINATO_PATH=/gpfs/bwfor/work/ws/hd_uk239-measelab/combinato
+
 # add conda to path
 source /gpfs/bwfor/work/ws/hd_uk239-measelab/miniconda3/etc/profile.d/conda.sh
 
