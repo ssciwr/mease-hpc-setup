@@ -16,6 +16,5 @@ conda env create -f mease-env.yml
 # activate env
 conda activate measelab
 
-# install
+# install mease-lab-to-nwb
 python setup.py develop
-cd ..
