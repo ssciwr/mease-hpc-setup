@@ -10,6 +10,8 @@ source miniconda3/etc/profile.d/conda.sh
 conda activate measelab
 
 # workaround for git ssl isse
+#NOTE: not yet working
+
 export GIT_SSL_NO_VERIFY=true
 
 # download YASS (no release yet: using git master)
@@ -20,7 +22,7 @@ cd yass
 pip install .
 
 # install pytorch
-conda install pytorch
+conda install pytorch -y
 
 # compile CUDA code
 cd src/gpu_bspline_interp

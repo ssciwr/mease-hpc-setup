@@ -29,7 +29,7 @@ You should then be in the `measelab` conda environment, with these programs inst
     - [Tridesclous](https://tridesclous.readthedocs.io/)
     - [Waveclus](https://github.com/csn-le/wave_clus)
     - [Combinato](https://github.com/jniediek/combinato)
-    - [YASS](https://github.com/paninski-lab/yass)
+    - ~[YASS](https://github.com/paninski-lab/yass)~
 
 If you want this to be done every time you log on, add the above line to the file `~/.bashrc`
 
