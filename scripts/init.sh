@@ -6,8 +6,9 @@ module load math/matlab/R2021a
 # make cuda available & set version
 module load devel/cuda/10.2
 
-# make recent gcc available & set version
-module load compiler/gnu/10.2
+# make gcc available & set version
+# note matlab 2021a cuda compilation requires gcc <= 9
+module load compiler/gnu/9.1
 
 # workaround for git ssl isse
 export GIT_SSL_NO_VERIFY=true
