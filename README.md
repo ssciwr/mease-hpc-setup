@@ -18,6 +18,9 @@ You should then be in the `measelab` conda environment, with these programs inst
   - 1.0
   - 2.0
   - 2.5
+  - 3.0 (git master)
+- herdingspikes
+- spyking-circus 
 
 If you want this to be done every time you log on, add the above line to the file `~/.bashrc`
 

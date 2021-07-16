@@ -6,14 +6,10 @@ source miniconda3/etc/profile.d/conda.sh
 # activate env
 conda activate measelab
 
-# make mpi available (openmpi < 3 required apparently?)
-# module load mpi/openmpi/2.1-intel-17.0
-
-# install
-# this installs a bunch of stuff:
-# conda install -c spyking-circus spyking-circus -y
-# try pip?:
 pip install spyking-circus
 
-# note: apparently installs files to $HOME? should check
-# also see if MPI is working, docs say it needs a hosts file but seem aimed at desktop user?
+# note: apparently installs files to $HOME?
+# should check if them not existing breaks anything for the user,
+# or if they need to copy these files to their $HOME?
+
+# also see if MPI is working, docs say it needs a hosts file but also seem aimed at a desktop user?
