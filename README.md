@@ -26,6 +26,7 @@ You should then be in the `measelab` conda environment, with these programs inst
 - [Mountainsort4](https://github.com/flatironinstitute/mountainsort)
 - [SpykingCircus](https://spyking-circus.readthedocs.io/)
 - [Tridesclous](https://tridesclous.readthedocs.io/)
+- [Waveclus](https://github.com/csn-le/wave_clus)
 
 If you want this to be done every time you log on, add the above line to the file `~/.bashrc`
 

@@ -30,6 +30,10 @@ bash setup_mountainsort4.sh $INSTALL
 
 bash setup_spyking_circus.sh $INSTALL
 
+bash setup_tridesclous.sh $INSTALL
+
+bash setup_waveclus.sh $INSTALL
+
 # init script for users
 
 cp init.sh $INSTALL/init.sh
