@@ -9,8 +9,5 @@ git clone https://github.com/paninski-lab/yass
 cd yass
 pip install .
 
-# install pytorch
-conda install -y pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch-lts
-
 # NOTE: yass GPU code compiled in compile_gpu.sh
 # NOTE: this needs to run on a node with the GPU!
