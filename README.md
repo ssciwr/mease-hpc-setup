@@ -22,6 +22,7 @@ You should then be in the `measelab` conda environment, with these programs inst
   - 2.0
   - 2.5
   - 3.0 (git master)
+- [Klusta](https://github.com/kwikteam/klusta)
 - [SpykingCircus](https://spyking-circus.readthedocs.io/)
 
 If you want this to be done every time you log on, add the above line to the file `~/.bashrc`
