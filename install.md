@@ -46,6 +46,7 @@ Todo:
 - see if read-only access would still allow everything to run
 - find long term alternative
 - better way to do this
+  - singularity container? (will GPU etc work?)
   - spack packages for sorters?
   - get them installed by urz as modules? (kilosort2 is already on there)
 

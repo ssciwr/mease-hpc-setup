@@ -14,8 +14,8 @@ You should then be in the `measelab` conda environment, with these programs inst
 - conda
 - matlab
 - mease-lab-to-nwb
-- [Herdingspikes2](https://github.com/mhhennig/hs2)
 - [HDSort](https://git.bsse.ethz.ch/hima_public/HDsort)
+- [Herdingspikes2](https://github.com/mhhennig/hs2)
 - [IronClust](https://github.com/jamesjun/ironclust)
 - [Kilosort](https://github.com/MouseLand/Kilosort)
   - 1.0
@@ -23,7 +23,9 @@ You should then be in the `measelab` conda environment, with these programs inst
   - 2.5
   - 3.0 (git master)
 - [Klusta](https://github.com/kwikteam/klusta)
+- [Mountainsort4](https://github.com/flatironinstitute/mountainsort)
 - [SpykingCircus](https://spyking-circus.readthedocs.io/)
+- [Tridesclous](https://tridesclous.readthedocs.io/)
 
 If you want this to be done every time you log on, add the above line to the file `~/.bashrc`
 
