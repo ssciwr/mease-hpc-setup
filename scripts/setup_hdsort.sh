@@ -1,8 +1,5 @@
 cd $1
 
-# make matlab available
-module load math/matlab/R2021a
-
 # workaround for git ssl isse
 export GIT_SSL_NO_VERIFY=true
 
