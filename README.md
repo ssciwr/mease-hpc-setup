@@ -24,12 +24,15 @@ You should then be in the `measelab` conda environment, with these programs inst
       - 2.5
       - 3.0 (git master)
     - [Klusta](https://github.com/kwikteam/klusta)
-    - [Mountainsort4](https://github.com/flatironinstitute/mountainsort)
-    - [SpykingCircus](https://spyking-circus.readthedocs.io/)
+    - ~[Mountainsort4](https://github.com/flatironinstitute/mountainsort)~
+      - not yet working
+    - ~[SpykingCircus](https://spyking-circus.readthedocs.io/)~
+      - not yet working
     - [Tridesclous](https://tridesclous.readthedocs.io/)
     - [Waveclus](https://github.com/csn-le/wave_clus)
     - [Combinato](https://github.com/jniediek/combinato)
     - ~[YASS](https://github.com/paninski-lab/yass)~
+      - not yet working
 
 If you want this to be done every time you log on, add the above line to the file `~/.bashrc`
 
@@ -49,7 +52,11 @@ The files are located at
 ```
 
 ### Interactive use
-To run an interactive job (i.e. log on directly to a HPC node and run commands there):
+To see how many idle nodes with GPUs attachaed are currently available:
+```
+sinfo_t_idle | grep "gpu-single"
+```
+To run an interactive job on one of these nodes (i.e. log on to it and run commands there):
 
 ```
 srun --partition=gpu-single --ntasks=1 --time=0:30:00 --nodes=1 --ntasks-per-node=1 --cpus-per-gpu=1 --mem=64gb --gres=gpu:RTX2080:1 --pty /bin/bash
@@ -58,6 +65,11 @@ srun --partition=gpu-single --ntasks=1 --time=0:30:00 --nodes=1 --ntasks-per-nod
 This asks for 30mins with 1 cpu, 1 RTX2080 GPU, and 64GB of ram.
 Other GPU types available are listed here:
 https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Hardware#Coprocessor_Nodes
+
+If you don't mind which type of GPU you get, you can simply use
+```
+--gres=gpu:1
+```
 
 Once the job starts you will be logged into the machine, if you didn't add
 the source line to your `~/.bashrc` file you will have to run it again manually.

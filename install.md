@@ -50,10 +50,14 @@ Todo:
   - spack packages for sorters?
   - get them installed by urz as modules? (kilosort2 is already on there)
 
+
 ## Reproducibility
 
 For now just a bunch of bash scripts:
 
 - wipe workspace then run `setup_all.sh` should reinstall everything from scratch
-- separate script for installing each sorter
-- note: paths are currently hard-coded all over the place
+- after that, `compile_gpu.sh` needs to run on a node with the GPU
+
+Todo:
+
+- integrate the compile_gpu step into setup_all as a job?
