@@ -1,3 +1,5 @@
+set -e -x
+
 cd $1
 
 # download miniconda

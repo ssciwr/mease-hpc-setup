@@ -1,5 +1,7 @@
 # script to run GPU compilation part of installs that needs to see the GPU
 
+set -e -x
+
 cd $1
 
 source init.sh
