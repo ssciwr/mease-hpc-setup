@@ -1,3 +1,5 @@
+set -e -x
+
 INSTALL=/gpfs/bwfor/work/ws/hd_uk239-measelab
 
 # miniconda
