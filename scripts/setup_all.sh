@@ -16,7 +16,7 @@ cp init.sh $INSTALL/init.sh
 
 # sorters
 
-bash setup_yass.sh $INSTALL
+# bash setup_yass.sh $INSTALL
 
 bash setup_combinato.sh $INSTALL
 
@@ -36,9 +36,9 @@ bash setup_kilosort3.sh $INSTALL
 
 bash setup_klusta.sh $INSTALL
 
-bash setup_mountainsort4.sh $INSTALL
+# bash setup_mountainsort4.sh $INSTALL
 
-bash setup_spyking_circus.sh $INSTALL
+# bash setup_spyking_circus.sh $INSTALL
 
 bash setup_tridesclous.sh $INSTALL
 

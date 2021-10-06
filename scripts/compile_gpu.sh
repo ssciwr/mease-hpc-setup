@@ -22,12 +22,12 @@ cd ../../
 
 # YASS
 
-cd yass/src/gpu_bspline_interp
-python setup.py install --force
-cd ..
-cd gpu_rowshift
-python setup.py install --force
-cd ../..
+# cd yass/src/gpu_bspline_interp
+# python setup.py install --force
+# cd ..
+# cd gpu_rowshift
+# python setup.py install --force
+# cd ../..
 
-# re-install yass
-pip install .
+# # re-install yass
+# pip install .

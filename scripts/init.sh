@@ -4,7 +4,7 @@
 module load math/matlab/R2021a
 
 # make cuda available & set version
-module load devel/cuda/10.2
+module load devel/cuda/11.2.2
 
 # make gcc available & set version
 # note matlab 2021a cuda compilation requires gcc <= 9
