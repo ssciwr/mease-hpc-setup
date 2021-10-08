@@ -14,6 +14,10 @@ bash setup_measelab.sh $INSTALL
 
 cp init.sh $INSTALL/init.sh
 
+# helper script for starting jupyter server
+
+bash setup_setup_jupyter.sh
+
 # sorters
 
 # bash setup_yass.sh $INSTALL
