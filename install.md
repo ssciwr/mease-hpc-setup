@@ -11,29 +11,38 @@ and activates the conde env.
 ## Location
 
 Temporary workspace allocated for 30 days with:
+
 ```
 ws_allocate measelab 30
 ```
+
 Location of resulting folder:
+
 ```
 ws_find measelab
 ```
 
 Then set read/write access for all members of `bw20g013` group (NB: not yet confirmed that this works):
+
 ```
 setfacl -Rm g:bw20g013:rwX,d:g:bw20g013:rwX /gpfs/bwfor/work/ws/hd_uk239-measelab
 
 ```
+
 To see access permissions:
+
 ```
 getfacl $(ws_find measelab)
 ```
 
 Status of all workspaces can be shown with:
+
 ```
 ws_list
 ```
+
 To renew the workspace for another 30 days from now:
+
 ```
 ws_extend measelab 30
 ```
@@ -49,7 +58,6 @@ Todo:
   - singularity container? (will GPU etc work?)
   - spack packages for sorters?
   - get them installed by urz as modules? (kilosort2 is already on there)
-
 
 ## Reproducibility
 
