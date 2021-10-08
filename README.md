@@ -52,7 +52,7 @@ The files are located at
 ```
 
 ### Interactive use
-To see how many idle nodes with GPUs attachaed are currently available:
+To see how many idle nodes with GPUs attached are currently available:
 ```
 sinfo_t_idle | grep "gpu-single"
 ```
@@ -71,7 +71,7 @@ If you don't mind which type of GPU you get, you can simply use
 --gres=gpu:1
 ```
 
-Once the job starts you will be logged into the machine, if you didn't add
+Once the job starts you will be logged into the machine - if you didn't add
 the source line to your `~/.bashrc` file you will have to run it again manually.
 
 ### Batch jobs
