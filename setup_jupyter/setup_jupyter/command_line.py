@@ -1,5 +1,9 @@
 import setup_jupyter
 
 
-def main():
+def submit():
+    setup_jupyter.submit()
+
+
+def start():
     setup_jupyter.start()

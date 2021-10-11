@@ -42,10 +42,35 @@ def start():
     hostname = subprocess.getoutput("hostname")
     assert (
         hostname[:5] != "login"
-    ), "Error: This is a login node, jupyter-setup should be ran on a compute node."
+    ), "Error: This is a login node, setup-jupyter should be ran on a compute node."
     ip = subprocess.getoutput('getent hosts $(uname -n) | head -1 | cut -d " " -f 1')
     userid = subprocess.getoutput("whoami")
     subproc = start_jupyter_lab(ip, port)
     token = get_jupyter_lab_token()
     print_instructions(port, hostname, userid, token)
     subproc.wait()
+
+
+status_filename = ".setup-jupyter-status.txt"
+
+
+def clear_status_file():
+    try:
+        os.remove(status_filename)
+    except OSError:
+        pass
+
+
+def submit():
+    minutes = 30
+    gpus = 0
+    job_id = subprocess.getoutput(
+        f"sbatch --parsable -t${minutes} --output={status_filename} setup-jupyter"
+    )
+    print("Submitted job with id f{job_id}...", end="")
+    time.sleep(2)
+    while not os.path.exists(status_filename):
+        print(".", end="")
+        time.sleep(2)
+    with open(status_filename) as f:
+        print(f.read())

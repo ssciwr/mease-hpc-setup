@@ -11,7 +11,7 @@ Python script to help with setting up a remote jupyter server instance on HPC
 2. Start an interactive job where the jupyter server will run
 
 - e.g. 30mins, no gpu: `srun --partition=single --time=0:30:00 --pty /bin/bash`
-- or 4hrs, with gpu: `srun --partition=gpu-single --time=4:00:00 --pty /bin/bash`
+- or 4hrs, with gpu: `srun --partition=gpu-single --gres=gpu:1 --time=4:00:00 --pty /bin/bash`
 
 3. Type `setup-jupyter` to
 
