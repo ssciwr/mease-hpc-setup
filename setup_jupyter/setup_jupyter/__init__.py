@@ -32,10 +32,15 @@ def print_instructions(port, hostname, userid, token):
     print(f"localhost:54736/?token={token}\n", flush=True)
 
 
-def get_jupyter_lab_token(job_id):
-    return json.loads(
-        subprocess.getoutput(f"srun --jobid={job_id} jupyter lab list --jsonlist")
-    )[0]["token"]
+def get_jupyter_lab_info(job_id):
+    jupyter_data = subprocess.getoutput(
+        f"srun --jobid={job_id} jupyter lab list --jsonlist"
+    )
+    print(jupyter_data)
+    try:
+        return json.loads(jupyter_data)[0]
+    except:
+        return None
 
 
 def get_scontrol_output(jobid):
@@ -58,13 +63,17 @@ def submit():
     print(f"Submitted job with id {job_id}...", end="", flush=True)
     time.sleep(2)
     state = get_scontrol_output(job_id).get("JobState")
-    print(state)
     while not state or state != "RUNNING":
         print(".", end="", flush=True)
         time.sleep(2)
         state = get_scontrol_output(job_id).get("JobState")
-        print(state)
+    print(f"job started.", flush=True)
     hostname = get_scontrol_output(job_id).get("BatchHost")
     userid = subprocess.getoutput("whoami")
-    token = get_jupyter_lab_token(job_id)
-    print_instructions(port, hostname, userid, token)
+    print("Looking for jupyter server info...")
+    info = get_jupyter_lab_info(job_id)
+    while not info:
+        print(".", end="", flush=True)
+        time.sleep(2)
+        info = get_jupyter_lab_info(job_id)
+    print_instructions(info["port"], hostname, userid, info["token"])
