@@ -66,12 +66,12 @@ def submit():
     minutes = 30
     gpus = 0
     job_id = subprocess.getoutput(
-        f"sbatch --parsable -t${minutes} --output={status_filename} setup-jupyter"
+        f"sbatch --parsable -t${minutes} --output={status_filename} setup-jupyter-start"
     )
-    print("Submitted job with id f{job_id}...", end="")
+    print(f"Submitted job with id {job_id}...", end="", flush=True)
     time.sleep(2)
     while not os.path.exists(status_filename):
-        print(".", end="")
+        print(".", end="", flush=True)
         time.sleep(2)
     with open(status_filename) as f:
         print(f.read())
