@@ -24,9 +24,6 @@ port = 54736
 
 
 def start():
-    assert (
-        hostname[:5] != "login"
-    ), "Error: This is a login node, setup-jupyter should be ran on a compute node."
     ip = subprocess.getoutput('getent hosts $(uname -n) | head -1 | cut -d " " -f 1')
     subproc = start_jupyter_lab(ip, port)
     subproc.wait()
@@ -67,10 +64,12 @@ def submit():
     print(f"Submitted job with id {job_id}...", end="", flush=True)
     time.sleep(2)
     state = get_scontrol_output(job_id).get("JobState")
+    print(state)
     while not state or state != "RUNNING":
         print(".", end="", flush=True)
         time.sleep(2)
         state = get_scontrol_output(job_id).get("JobState")
+        print(state)
     hostname = get_scontrol_output(job_id).get("BatchHost")
     userid = subprocess.getoutput("whoami")
     token = get_jupyter_lab_token(job_id)
