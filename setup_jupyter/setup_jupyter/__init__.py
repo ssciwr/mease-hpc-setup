@@ -55,6 +55,7 @@ def get_scontrol_output(jobid):
         if len(pair) == 2:
             key, value = pair
             data[key] = value
+    return data
 
 
 def submit():
@@ -65,13 +66,12 @@ def submit():
     job_id = subprocess.getoutput(sbatch_cmd)
     print(f"Submitted job with id {job_id}...", end="", flush=True)
     time.sleep(2)
-    output = get_scontrol_output(job_id)
-    print(output)
-    while output["JobState"] != "RUNNING":
+    state = get_scontrol_output(job_id).get("JobState")
+    while not state or state != "RUNNING":
         print(".", end="", flush=True)
         time.sleep(2)
-        output = get_scontrol_output(job_id)
-        print(output)
+        state = get_scontrol_output(job_id).get("JobState")
+    hostname = get_scontrol_output(job_id).get("BatchHost")
     userid = subprocess.getoutput("whoami")
     token = get_jupyter_lab_token(job_id)
-    print_instructions(port, scontrol_output["BatchHost"], userid, token)
+    print_instructions(port, hostname, userid, token)
