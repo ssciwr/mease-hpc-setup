@@ -37,7 +37,6 @@ def get_jupyter_lab_info(job_id):
     jupyter_data = subprocess.getoutput(
         f"srun --jobid={job_id} jupyter lab list --jsonlist"
     )
-    print(jupyter_data)
     try:
         return json.loads(jupyter_data)[0]
     except:
@@ -73,7 +72,7 @@ def submit():
     print(f"job started.", flush=True)
     hostname = get_scontrol_output(job_id).get("BatchHost")
     userid = subprocess.getoutput("whoami")
-    print("Looking for jupyter server info...")
+    print("Looking for jupyter server info...", flush=True)
     info = get_jupyter_lab_info(job_id)
     while not info:
         print(".", end="", flush=True)
