@@ -26,11 +26,11 @@ def start_jupyter_lab(ip, port):
 
 
 def print_instructions(port, hostname, userid, token):
-    print("2. Run this command on *your* computer:")
+    print("2. Run this command in a new terminal on *your* computer:")
     print(
         f"\nssh -L{port}:{hostname}:{port} {userid}@bwforcluster.bwservices.uni-heidelberg.de\n"
     )
-    print("3. Open this address in a web browser:\n")
+    print("3. Open this address in a web browser to access the jupyter notebook:\n")
     print(f"localhost:54736/?token={token}\n")
 
 

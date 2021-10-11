@@ -6,9 +6,18 @@ Python script to help with setting up a remote jupyter server instance on HPC
 
 1. Log in to the cluster
 
+- e.g. `ssh hd_ab213@bwforcluster.bwservices.uni-heidelberg.de`
+
 2. Start an interactive job where the jupyter server will run
 
-3. Type `setup-jupyter`
+- e.g. 30mins, no gpu: `srun --partition=single --time=0:30:00 --pty /bin/bash`
+- or 4hrs, with gpu: `srun --partition=gpu-single --time=4:00:00 --pty /bin/bash`
+
+3. Type `setup-jupyter` to
+
+- start a jupyter lab server instance
+- display a command to set up port forwarding
+- display the web address of the jupyter notebook
 
 4. Copy and paste the `ssh ...` command provided by `setup-jupyter` into a new terminal on your computer
 
@@ -27,7 +36,7 @@ Python script to help with setting up a remote jupyter server instance on HPC
 (measelab) [hd_ab123@XXXXXX ~]$ setup-jupyter
 1. Starting Jupyter Lab server......done.
 
-2. Run this command on *your* computer:
+2. Run this command in a new terminal on *your* computer:
 
 ssh -L12345:XXXXXX:12345 hd_ab123@bwforcluster.bwservices.uni-heidelberg.de
 
