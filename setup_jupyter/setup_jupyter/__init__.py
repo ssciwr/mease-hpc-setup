@@ -63,11 +63,14 @@ def clear_status_file():
 
 
 def submit():
+    clear_status_file()
     minutes = 30
     gpus = 0
-    job_id = subprocess.getoutput(
-        f"sbatch --parsable -t${minutes} --output={status_filename} setup-jupyter-start"
+    sbatch_cmd = (
+        f"sbatch --parsable -t{minutes} --output={status_filename} setup-jupyter-start"
     )
+    print(sbatch_cmd)
+    job_id = subprocess.getoutput(sbatch_cmd)
     print(f"Submitted job with id {job_id}...", end="", flush=True)
     time.sleep(2)
     while not os.path.exists(status_filename):
