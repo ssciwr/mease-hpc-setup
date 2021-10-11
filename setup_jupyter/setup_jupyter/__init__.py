@@ -8,6 +8,10 @@ def jupyter_lab_count():
     return len(json.loads(subprocess.getoutput("jupyter lab list --jsonlist")))
 
 
+def get_jupyter_lab_token():
+    return json.loads(subprocess.getoutput("jupyter lab list --jsonlist"))[0]["token"]
+
+
 def start_jupyter_lab(ip, port):
     assert jupyter_lab_count() == 0, "Error: Jupyter Lab server already running."
     print("1. Starting Jupyter Lab server...", end="")
@@ -21,8 +25,7 @@ def start_jupyter_lab(ip, port):
         print(".", end="")
         time.sleep(1)
     print("done.\n")
-    token = json.loads(subprocess.getoutput("jupyter lab list --jsonlist"))[0]["token"]
-    return token
+    return p
 
 
 def print_instructions(port, hostname, userid, token):
@@ -42,5 +45,7 @@ def start():
     ), "Error: This is a login node, jupyter-setup should be ran on a compute node."
     ip = subprocess.getoutput('getent hosts $(uname -n) | head -1 | cut -d " " -f 1')
     userid = subprocess.getoutput("whoami")
-    token = start_jupyter_lab(ip, port)
+    subproc = start_jupyter_lab(ip, port)
+    token = get_jupyter_lab_token()
     print_instructions(port, hostname, userid, token)
+    subproc.wait()
