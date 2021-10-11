@@ -2,6 +2,7 @@ import subprocess
 import json
 import sys
 import time
+import os
 
 
 def jupyter_lab_count():
