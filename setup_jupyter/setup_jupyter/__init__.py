@@ -50,9 +50,11 @@ def get_jupyter_lab_token(job_id):
 def get_scontrol_output(jobid):
     data = {}
     scontrol_output = subprocess.getoutput(f"scontrol show job {jobid}")
-    for item in scontrol_output.split:
-        key, value = item.split("=")
-        data[key] = value
+    for item in scontrol_output.split():
+        pair = item.split("=")
+        if len(pair) == 2:
+            key, value = pair
+            data[key] = value
 
 
 def submit():
