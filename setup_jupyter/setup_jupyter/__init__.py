@@ -58,11 +58,10 @@ def get_scontrol_output(jobid):
 def submit():
     minutes = click.prompt("Job runtime in minutes", type=int, default=60)
     gpu = click.prompt("GPU required", type=bool, default=False)
-    partition = "single"
+    options = "--partition=single"
     if gpu:
-        partition = "single-gpu"
-    sbatch_cmd = f"sbatch --parsable -t{minutes} --output=.setup-jupyter-log.txt setup-jupyter-start"
-    print(sbatch_cmd)
+        options = "--partition=gpu-single --gres=gpu:1"
+    sbatch_cmd = f"sbatch --parsable -t{minutes} {options} --output=.setup-jupyter-log.txt setup-jupyter-start"
     job_id = subprocess.getoutput(sbatch_cmd)
     print(f"Submitted job with id {job_id}...", end="", flush=True)
     time.sleep(2)
@@ -80,4 +79,5 @@ def submit():
         print(".", end="", flush=True)
         time.sleep(2)
         info = get_jupyter_lab_info(job_id)
+    print(f"found.", flush=True)
     print_instructions(info["port"], hostname, userid, info["token"])
