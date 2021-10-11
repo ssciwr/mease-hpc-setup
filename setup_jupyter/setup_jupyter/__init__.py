@@ -3,6 +3,7 @@ import json
 import sys
 import time
 import os
+import click
 
 
 def start_jupyter_lab(ip, port):
@@ -55,8 +56,11 @@ def get_scontrol_output(jobid):
 
 
 def submit():
-    minutes = 30
-    gpus = 0
+    minutes = int(input("Job runtime in minutes [60]") or 60)
+    gpu = bool(input("GPU required [no]") or False)
+    partition = "single"
+    if gpu:
+        partition = "single-gpu"
     sbatch_cmd = f"sbatch --parsable -t{minutes} --output=.setup-jupyter-log.txt setup-jupyter-start"
     print(sbatch_cmd)
     job_id = subprocess.getoutput(sbatch_cmd)
