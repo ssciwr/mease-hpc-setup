@@ -25,11 +25,11 @@ def start():
 
 
 def print_instructions(port, hostname, userid, token):
-    print("2. Run this command in a new terminal on *your* computer:")
+    print("\n1. Run this command in a new terminal on *your* computer:")
     print(
         f"\nssh -L{port}:{hostname}:{port} {userid}@bwforcluster.bwservices.uni-heidelberg.de\n"
     )
-    print("3. Open this address in a web browser to access the jupyter notebook:\n")
+    print("2. Open this address in a web browser to access the jupyter notebook:\n")
     print(f"localhost:54736/?token={token}\n", flush=True)
 
 
@@ -56,8 +56,8 @@ def get_scontrol_output(jobid):
 
 
 def submit():
-    minutes = int(input("Job runtime in minutes [60]") or 60)
-    gpu = bool(input("GPU required [no]") or False)
+    minutes = click.prompt("Job runtime in minutes", type=int, default=60)
+    gpu = click.prompt("GPU required", type=bool, default=False)
     partition = "single"
     if gpu:
         partition = "single-gpu"
