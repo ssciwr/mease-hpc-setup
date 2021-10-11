@@ -37,6 +37,9 @@ def print_instructions(port, hostname, userid, token):
 def start():
     port = 54736
     hostname = subprocess.getoutput("hostname")
+    assert (
+        hostname[:5] != "login"
+    ), "Error: This is a login node, jupyter-setup should be ran on a compute node."
     ip = subprocess.getoutput('getent hosts $(uname -n) | head -1 | cut -d " " -f 1')
     userid = subprocess.getoutput("whoami")
     token = start_jupyter_lab(ip, port)
