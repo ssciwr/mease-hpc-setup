@@ -7,17 +7,11 @@ import os
 
 def start_jupyter_lab(ip, port):
     print("1. Starting Jupyter Lab server...", end="")
-    p = subprocess.Popen(
+    return subprocess.Popen(
         ["jupyter", "lab", "--no-browser", f"--port={port}", f"--ip={ip}"],
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
     )
-    time.sleep(1)
-    while jupyter_lab_count() == 0:
-        print(".", end="")
-        time.sleep(1)
-    print("done.\n")
-    return p
 
 
 port = 54736
