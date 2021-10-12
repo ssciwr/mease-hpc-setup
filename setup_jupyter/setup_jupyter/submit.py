@@ -99,7 +99,7 @@ def submit(runtime, gpu_type, verbose):
     print()
     job_id = subprocess.getoutput(sbatch_cmd)
     print(
-        f"Submitted {runtime}-hour {gpu_type + 'GPU ' if with_gpu else ''}job with id {job_id}...",
+        f"Submitted {runtime}-hour {gpu_type + ' GPU ' if with_gpu else ''}job with id {job_id}...",
         end="",
         flush=True,
     )
