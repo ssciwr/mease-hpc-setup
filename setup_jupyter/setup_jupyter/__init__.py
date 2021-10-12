@@ -25,6 +25,7 @@ def start():
 
 
 def print_instructions(port, hostname, userid, token):
+    print("\n To access the jupyter notebook:\n")
     print("\n1. Run this command in a new terminal on *your* computer:")
     print(
         f"\nssh -L{port}:{hostname}:{port} {userid}@bwforcluster.bwservices.uni-heidelberg.de\n"
@@ -72,7 +73,7 @@ def submit():
     print(f"job started.", flush=True)
     hostname = get_scontrol_output(job_id).get("BatchHost")
     userid = subprocess.getoutput("whoami")
-    print("Looking for jupyter server info...", flush=True)
+    print("Looking for jupyter server info...", end="", flush=True)
     info = get_jupyter_lab_info(job_id)
     while not info:
         print(".", end="", flush=True)
