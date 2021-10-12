@@ -66,7 +66,7 @@ The files are then located at
 ## Interactive Jupyter use
 
 There is a helper script for setting up and using a remote jupyter server on the cluster,
-see [setup-jupyter/README.md](setup-jupyter/README) for more information.
+see [setup-jupyter](setup-jupyter/README.md) for more information.
 
 ## Interactive command-line use
 

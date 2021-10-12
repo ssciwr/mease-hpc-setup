@@ -1,7 +1,6 @@
 # Jupyter Notes
 
 Notes on setting up and using a remote jupyter server on the cluster.
-For a more user friendly approach, see [setup-jupyter/README.md](setup-jupyter/README).
 
 ## Server setup
 
