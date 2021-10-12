@@ -49,7 +49,7 @@ def get_scontrol_output(jobid):
 @click.command()
 @click.option(
     "--runtime",
-    type=click.IntRange(1, 12),
+    type=click.IntRange(1, 48),
     required=True,
     default=1,
     help="Job runtime in hours",
@@ -65,12 +65,43 @@ def get_scontrol_output(jobid):
     show_default=True,
     prompt="Number of GPUs",
 )
-def submit(runtime, gpus):
+@click.option(
+    "--gpu-type",
+    type=click.Choice(
+        [
+            "any",
+            "K80",
+            "TITAN",
+            "V100",
+            "GTX1080",
+            "RTX2080",
+            "V100",
+            "V100S",
+            "RTX3090",
+            "RTX8000",
+        ],
+        case_sensitive=False,
+    ),
+    required=False,
+    default="any",
+    help="Type of GPU",
+    show_default=True,
+)
+@click.option(
+    "-v",
+    "--verbose",
+    default=False,
+    is_flag=True,
+    help="Verbose output",
+)
+def submit(runtime, gpus, gpu_type, verbose):
     sbatch_options = "--partition=single"
     if gpus > 0:
-        sbatch_options = f"--partition=gpu-single --gres=gpu:{gpus}"
+        sbatch_options = f"--partition=gpu-single --gres=gpu{':' if gpu_type == 'any' else ':' + gpu_type + ':'}{gpus}"
     minutes = 60 * runtime
     sbatch_cmd = f"sbatch --parsable -t{minutes} {sbatch_options} --output=.setup-jupyter-log.txt setup-jupyter-start"
+    if verbose:
+        print("# sbatch command: " + sbatch_cmd)
     print()
     job_id = subprocess.getoutput(sbatch_cmd)
     print(
