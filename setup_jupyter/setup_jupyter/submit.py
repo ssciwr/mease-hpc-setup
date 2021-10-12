@@ -103,12 +103,16 @@ def submit(runtime, gpu_type, verbose):
         end="",
         flush=True,
     )
-    time.sleep(2)
     state = get_scontrol_output(job_id).get("JobState")
     while not state or state != "RUNNING":
-        print(".", end="", flush=True)
-        time.sleep(2)
-        state = get_scontrol_output(job_id).get("JobState")
+        try:
+            print(".", end="", flush=True)
+            time.sleep(2)
+            state = get_scontrol_output(job_id).get("JobState")
+        except KeyboardInterrupt:
+            print(f"\nCancelling job {job_id}.")
+            print(subprocess.getoutput(f"scancel {job_id}"))
+            sys.exit()
     print(f"job started.", flush=True)
     hostname = get_scontrol_output(job_id).get("BatchHost")
     userid = subprocess.getoutput("whoami")
