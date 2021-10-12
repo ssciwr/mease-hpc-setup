@@ -31,17 +31,29 @@ Python script to help with setting up a remote jupyter server instance on HPC
 ## Example output
 
 ```
-(measelab) [hd_ab123@XXXXXX ~]$ setup-jupyter
-1. Starting Jupyter Lab server......done.
+(measelab) [hd_xx123@login3 setup_jupyter]$ setup-jupyter
+Job runtime in hours [1]: 2
+GPU type required (none, any, K80, TITAN, V100, GTX1080, RTX2080, V100, V100S, RTX3090, RTX8000) [any]:
 
-2. Run this command in a new terminal on *your* computer:
+Submitted 2-hour any GPU job with id 787623...job started.
+Looking for jupyter server info....found.
 
-ssh -L12345:XXXXXX:12345 hd_ab123@bwforcluster.bwservices.uni-heidelberg.de
+ To access the jupyter notebook:
 
-3. Open this address in a web browser:
+1. Press the keys 'Enter', then '~', then 'C' in your terminal: this should give you a new command line starting with 'ssh>'
 
-localhost:12345/?token=abcdefghijklmnopqrstuvwxyz
+2. Paste this into the terminal and press 'Enter': it should then say 'Forwarding Port', press 'Enter' again to go back to the normal command line
 
+-L57191:h11c1111:57191
+
+3. Open this address in a web browser to access the jupyter notebook:
+
+localhost:57191/?token=0e28e2f990ca9f2d7feadd0daa1bb439eaebaf69a623c738
+
+
+Note: If step 2 doesn't work in your ssh client, you can instead open a new command line terminal, and create a new ssh connection which forwards the required port with this command: (you will probably have to re-enter your OTP and password though)
+
+ssh -L57191:h11c1111:57191 hd_xx123@bwforcluster.bwservices.uni-heidelberg.de
 ```
 
 ## Tips
