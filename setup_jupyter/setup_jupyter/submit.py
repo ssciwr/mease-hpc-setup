@@ -99,7 +99,11 @@ def submit(runtime, gpu_type, verbose):
     print()
     job_id = subprocess.getoutput(sbatch_cmd)
     print(
-        f"Submitted {runtime}-hour {gpu_type + ' GPU ' if with_gpu else ''}job with id {job_id}...",
+        f"Submitted {runtime}-hour {gpu_type + ' GPU ' if with_gpu else ''}job with id {job_id}.",
+        flush=True,
+    )
+    print(
+        "Job queued...",
         end="",
         flush=True,
     )
@@ -113,7 +117,7 @@ def submit(runtime, gpu_type, verbose):
             print(f"\nCancelling job {job_id}.")
             print(subprocess.getoutput(f"scancel {job_id}"))
             sys.exit()
-    print(f"job started.", flush=True)
+    print(f"job running.", flush=True)
     hostname = get_scontrol_output(job_id).get("BatchHost")
     userid = subprocess.getoutput("whoami")
     print("Looking for jupyter server info...", end="", flush=True)
