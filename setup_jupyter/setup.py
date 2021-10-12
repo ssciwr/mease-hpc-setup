@@ -19,8 +19,8 @@ setup(
     install_requires=requirements,
     entry_points={
         "console_scripts": [
-            "setup-jupyter=setup_jupyter.command_line:submit",
-            "setup-jupyter-start=setup_jupyter.command_line:start",
+            "setup-jupyter = setup_jupyter.submit:submit",
+            "setup-jupyter-start = setup_jupyter.start:start",
         ]
     },
 )
