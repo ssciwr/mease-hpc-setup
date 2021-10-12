@@ -57,18 +57,10 @@ def get_scontrol_output(jobid):
     prompt="Job runtime in hours",
 )
 @click.option(
-    "--gpus",
-    type=click.IntRange(0, 1),
-    required=True,
-    default=0,
-    help="Number of GPUs",
-    show_default=True,
-    prompt="Number of GPUs",
-)
-@click.option(
     "--gpu-type",
     type=click.Choice(
         [
+            "none",
             "any",
             "K80",
             "TITAN",
@@ -82,10 +74,11 @@ def get_scontrol_output(jobid):
         ],
         case_sensitive=False,
     ),
-    required=False,
+    required=True,
     default="any",
     help="Type of GPU",
     show_default=True,
+    prompt="GPU type required",
 )
 @click.option(
     "-v",
@@ -94,10 +87,11 @@ def get_scontrol_output(jobid):
     is_flag=True,
     help="Verbose output",
 )
-def submit(runtime, gpus, gpu_type, verbose):
+def submit(runtime, gpu_type, verbose):
     sbatch_options = "--partition=single"
-    if gpus > 0:
-        sbatch_options = f"--partition=gpu-single --gres=gpu{':' if gpu_type == 'any' else ':' + gpu_type + ':'}{gpus}"
+    with_gpu = gpu_type != "none"
+    if with_gpu:
+        sbatch_options = f"--partition=gpu-single --gres=gpu{':1' if gpu_type == 'any' else ':' + gpu_type + ':1'}"
     minutes = 60 * runtime
     sbatch_cmd = f"sbatch --parsable -t{minutes} {sbatch_options} --output=.setup-jupyter-log.txt setup-jupyter-start"
     if verbose:
@@ -105,7 +99,7 @@ def submit(runtime, gpus, gpu_type, verbose):
     print()
     job_id = subprocess.getoutput(sbatch_cmd)
     print(
-        f"Submitted {runtime}-hour {'GPU ' if gpus else ''}job with id {job_id}...",
+        f"Submitted {runtime}-hour {gpu_type + 'GPU ' if with_gpu else ''}job with id {job_id}...",
         end="",
         flush=True,
     )
