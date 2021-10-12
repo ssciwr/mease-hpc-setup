@@ -1,11 +1,9 @@
 # Mease Lab HPC Setup
 
 Work-in-progress setup guide & installation scripts for
-running [mease-lab-to-nwb](https://github.com/lkeegan/mease-lab-to-nwb) on HPC.
+running [mease-lab-to-nwb](https://github.com/ssciwr/mease-lab-to-nwb) on the MLS&WISO cluster.
 
-## MLS&WISO Cluster
-
-### Initial setup
+## Initial setup
 
 To get started, after logging into the cluster, do
 
@@ -49,7 +47,7 @@ If you want this to be done every time you log on, add the above line to the fil
 Note: all dependencies have for now been installed to this temporary workspace `/gpfs/bwfor/work/ws/hd_uk239-measelab`
 (which all users in `bw20g013` should have read/write access to)
 
-### SDS
+## SDS
 
 To get SDS access on the cluster type
 
@@ -65,12 +63,12 @@ The files are then located at
 /mnt/sds-hd/sd19b001
 ```
 
-### Interactive Jupyter use
+## Interactive Jupyter use
 
 There is a helper script for setting up and using a remote jupyter server on the cluster,
 see [setup-jupyter/README.md](setup-jupyter/README) for more information.
 
-### Interactive command-line use
+## Interactive command-line use
 
 To see how many idle nodes with GPUs attached are currently available:
 
@@ -97,6 +95,7 @@ If you don't mind which type of GPU you get, you can simply use
 Once the job starts you will be logged into the machine - if you didn't add
 the source line to your `~/.bashrc` file you will have to run it again manually.
 
-### Batch jobs
+## Batch jobs
 
 Longer jobs can be submitted as batch jobs to a queue, and will run when resources are available.
+See https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Slurm for more information.
