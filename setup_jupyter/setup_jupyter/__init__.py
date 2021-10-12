@@ -25,13 +25,22 @@ def start():
 
 
 def print_instructions(port, hostname, userid, token):
-    print("\n To access the jupyter notebook:\n")
-    print("\n1. Run this command in a new terminal on *your* computer:")
+    print("\n To access the jupyter notebook:")
+    print(
+        "\n1. Press the keys 'Enter', then '~', then 'C' in your terminal: this should give you a new command line starting with 'ssh>'"
+    )
+    print(
+        "\n2. Paste this into the terminal and press 'Enter': it should then say 'Forwarding Port', press 'Enter' again to go back to the normal command line"
+    )
+    print(f"\n-L{port}:{hostname}:{port}\n")
+    print("3. Open this address in a web browser to access the jupyter notebook:\n")
+    print(f"localhost:54736/?token={token}\n", flush=True)
+    print(
+        "\nNote: If step 2 doesn't work in your ssh client, you can instead open a new command line terminal, and create a new ssh connection which forwards the required port with this command: (you will probably have to re-enter your OTP and password though)"
+    )
     print(
         f"\nssh -L{port}:{hostname}:{port} {userid}@bwforcluster.bwservices.uni-heidelberg.de\n"
     )
-    print("2. Open this address in a web browser to access the jupyter notebook:\n")
-    print(f"localhost:54736/?token={token}\n", flush=True)
 
 
 def get_jupyter_lab_info(job_id):
