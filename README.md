@@ -5,7 +5,13 @@ running [mease-lab-to-nwb](https://github.com/ssciwr/mease-lab-to-nwb) on the ML
 
 ## Initial setup
 
-To get started, after logging into the cluster, do
+Log in to the cluser
+
+```
+ssh hd_ab213@bwforcluster.bwservices.uni-heidelberg.de
+```
+
+After logging into the cluster, do
 
 ```
 source /gpfs/bwfor/work/ws/hd_uk239-measelab/init.sh
@@ -18,9 +24,9 @@ You should then be in the `measelab` conda environment, with these programs inst
 
 - conda
 - matlab
-- mease-lab-to-nwb
-- setup-jupyter
-- various sorters
+- [mease-lab-to-nwb](https://github.com/ssciwr/mease-lab-to-nwb)
+- [setup-jupyter](https://github.com/ssciwr/mease-hpc-setup/setup-jupyter)
+- spike sorters
   - [HDSort](https://git.bsse.ethz.ch/hima_public/HDsort)
   - [Herdingspikes2](https://github.com/mhhennig/hs2)
   - [IronClust](https://github.com/jamesjun/ironclust)
@@ -42,7 +48,11 @@ You should then be in the `measelab` conda environment, with these programs inst
 
 </details>
 
-If you want this to be done every time you log on, add the above line to the file `~/.bashrc`
+To do this automatically every time you log on or run a job, add the above line to your `~/.bashrc`:
+
+```
+echo "source /gpfs/bwfor/work/ws/hd_uk239-measelab/init.sh" >> ~/.bashrc
+```
 
 Note: all dependencies have for now been installed to this temporary workspace `/gpfs/bwfor/work/ws/hd_uk239-measelab`
 (which all users in `bw20g013` should have read/write access to)
@@ -55,7 +65,7 @@ To get SDS access on the cluster type
 kinit
 ```
 
-using your SDS@hd service password
+and enter your SDS@hd service password when prompted.
 
 The files are then located at
 
@@ -65,8 +75,15 @@ The files are then located at
 
 ## Interactive Jupyter use
 
-There is a helper script for setting up and using a remote jupyter server on the cluster,
-see [setup-jupyter](setup-jupyter/README.md) for more information.
+There is a helper script for setting up and using a remote jupyter server on the cluster.
+To use it, type
+
+```
+setup-jupyter
+```
+
+and follow the instructions.
+See [setup-jupyter](setup-jupyter) for more information.
 
 ## Interactive command-line use
 
