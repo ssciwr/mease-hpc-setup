@@ -17,29 +17,12 @@ You should then be in the `measelab` conda environment, with these programs inst
 
 <details>
   <summary>Installed software</summary>
-  - conda
-  - matlab
-  - mease-lab-to-nwb
-  - setup-jupyter
-  - various sorters
-    - [HDSort](https://git.bsse.ethz.ch/hima_public/HDsort)
-    - [Herdingspikes2](https://github.com/mhhennig/hs2)
-    - [IronClust](https://github.com/jamesjun/ironclust)
-    - [Kilosort](https://github.com/MouseLand/Kilosort)
-      - 1.0
-      - 2.0
-      - 2.5
-      - 3.0 (git master)
-    - [Klusta](https://github.com/kwikteam/klusta)
-    - ~[Mountainsort4](https://github.com/flatironinstitute/mountainsort)~
-      - not yet working
-    - ~[SpykingCircus](https://spyking-circus.readthedocs.io/)~
-      - not yet working
-    - [Tridesclous](https://tridesclous.readthedocs.io/)
-    - [Waveclus](https://github.com/csn-le/wave_clus)
-    - [Combinato](https://github.com/jniediek/combinato)
-    - ~[YASS](https://github.com/paninski-lab/yass)~
-      - not yet working
+
+- conda
+- matlab
+- mease-lab-to-nwb
+- setup-jupyter
+- various sorters - [HDSort](https://git.bsse.ethz.ch/hima_public/HDsort) - [Herdingspikes2](https://github.com/mhhennig/hs2) - [IronClust](https://github.com/jamesjun/ironclust) - [Kilosort](https://github.com/MouseLand/Kilosort) - 1.0 - 2.0 - 2.5 - 3.0 (git master) - [Klusta](https://github.com/kwikteam/klusta) - ~[Mountainsort4](https://github.com/flatironinstitute/mountainsort)~ - not yet working - ~[SpykingCircus](https://spyking-circus.readthedocs.io/)~ - not yet working - [Tridesclous](https://tridesclous.readthedocs.io/) - [Waveclus](https://github.com/csn-le/wave_clus) - [Combinato](https://github.com/jniediek/combinato) - ~[YASS](https://github.com/paninski-lab/yass)~ - not yet working
 </details>
 
 If you want this to be done every time you log on, add the above line to the file `~/.bashrc`
