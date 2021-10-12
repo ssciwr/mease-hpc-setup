@@ -16,7 +16,7 @@ def print_instructions(port, hostname, userid, token):
     )
     print(f"\n-L{port}:{hostname}:{port}\n")
     print("3. Open this address in a web browser to access the jupyter notebook:\n")
-    print(f"localhost:54736/?token={token}\n", flush=True)
+    print(f"localhost:{port}/?token={token}\n", flush=True)
     print(
         "\nNote: If step 2 doesn't work in your ssh client, you can instead open a new command line terminal, and create a new ssh connection which forwards the required port with this command: (you will probably have to re-enter your OTP and password though)"
     )
@@ -68,9 +68,10 @@ def get_scontrol_output(jobid):
 def submit(runtime, gpus):
     sbatch_options = "--partition=single"
     if gpus > 0:
-        sbatch_options = f"--partition=gpu-single --gres=gpus:{gpus}"
+        sbatch_options = f"--partition=gpu-single --gres=gpu:{gpus}"
     minutes = 60 * runtime
     sbatch_cmd = f"sbatch --parsable -t{minutes} {sbatch_options} --output=.setup-jupyter-log.txt setup-jupyter-start"
+    print()
     job_id = subprocess.getoutput(sbatch_cmd)
     print(
         f"Submitted {runtime}-hour {'GPU ' if gpus else ''}job with id {job_id}...",
