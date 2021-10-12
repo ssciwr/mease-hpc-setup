@@ -14,7 +14,7 @@ setup(
     description="Script to run jupyter server on HPC",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ssciwr/mease-hpc-setup/setup_jupyter",
+    url="https://github.com/ssciwr/mease-hpc-setup/setup-jupyter",
     packages=find_packages(),
     install_requires=requirements,
     entry_points={

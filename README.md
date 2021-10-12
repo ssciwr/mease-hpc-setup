@@ -15,28 +15,32 @@ source /gpfs/bwfor/work/ws/hd_uk239-measelab/init.sh
 
 You should then be in the `measelab` conda environment, with these programs installed & on path:
 
-- conda
-- matlab
-- mease-lab-to-nwb
-- various sorters
-  - [HDSort](https://git.bsse.ethz.ch/hima_public/HDsort)
-  - [Herdingspikes2](https://github.com/mhhennig/hs2)
-  - [IronClust](https://github.com/jamesjun/ironclust)
-  - [Kilosort](https://github.com/MouseLand/Kilosort)
-    - 1.0
-    - 2.0
-    - 2.5
-    - 3.0 (git master)
-  - [Klusta](https://github.com/kwikteam/klusta)
-  - ~[Mountainsort4](https://github.com/flatironinstitute/mountainsort)~
-    - not yet working
-  - ~[SpykingCircus](https://spyking-circus.readthedocs.io/)~
-    - not yet working
-  - [Tridesclous](https://tridesclous.readthedocs.io/)
-  - [Waveclus](https://github.com/csn-le/wave_clus)
-  - [Combinato](https://github.com/jniediek/combinato)
-  - ~[YASS](https://github.com/paninski-lab/yass)~
-    - not yet working
+<details>
+  <summary>Installed software</summary>
+  - conda
+  - matlab
+  - mease-lab-to-nwb
+  - setup-jupyter
+  - various sorters
+    - [HDSort](https://git.bsse.ethz.ch/hima_public/HDsort)
+    - [Herdingspikes2](https://github.com/mhhennig/hs2)
+    - [IronClust](https://github.com/jamesjun/ironclust)
+    - [Kilosort](https://github.com/MouseLand/Kilosort)
+      - 1.0
+      - 2.0
+      - 2.5
+      - 3.0 (git master)
+    - [Klusta](https://github.com/kwikteam/klusta)
+    - ~[Mountainsort4](https://github.com/flatironinstitute/mountainsort)~
+      - not yet working
+    - ~[SpykingCircus](https://spyking-circus.readthedocs.io/)~
+      - not yet working
+    - [Tridesclous](https://tridesclous.readthedocs.io/)
+    - [Waveclus](https://github.com/csn-le/wave_clus)
+    - [Combinato](https://github.com/jniediek/combinato)
+    - ~[YASS](https://github.com/paninski-lab/yass)~
+      - not yet working
+</details>
 
 If you want this to be done every time you log on, add the above line to the file `~/.bashrc`
 
@@ -53,13 +57,18 @@ kinit
 
 using your SDS@hd service password
 
-The files are located at
+The files are then located at
 
 ```
 /mnt/sds-hd/sd19b001
 ```
 
-### Interactive use
+### Interactive Jupyter use
+
+There is a helper script for setting up and using a remote jupyter server on the cluster,
+see [setup-jupyter/README.md](setup-jupyter/README) for more information.
+
+### Interactive command-line use
 
 To see how many idle nodes with GPUs attached are currently available:
 
