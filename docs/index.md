@@ -24,10 +24,10 @@ Register for an account (see [BwForCluster_User_Access](https://wiki.bwhpc.de/e/
 Log in to the cluster with username `hd_UNIID`, where `UNIID` is your uni-id:
 
 ```
-ssh hd_ab213@bwforcluster.bwservices.uni-heidelberg.de
+ssh hd_ab123@bwforcluster.bwservices.uni-heidelberg.de
 ```
 
-It will ask you for your service password, and your OTP (the current 6-digit token from your authenticator app)
+It will ask you for your bwForCluster service password, and your OTP (the current 6-digit token displayed in your authenticator app)
 
 After logging into the cluster, do
 
@@ -37,7 +37,6 @@ source /gpfs/bwfor/work/ws/hd_uk239-measelab/init.sh
 
 You should then be in the `measelab` conda environment, with these programs installed & on path:
 
-- conda
 - matlab
 - [mease-lab-to-nwb](https://github.com/ssciwr/mease-lab-to-nwb)
 - [setup-jupyter](https://github.com/ssciwr/mease-hpc-setup/setup-jupyter)
@@ -45,30 +44,17 @@ You should then be in the `measelab` conda environment, with these programs inst
   - [HDSort](https://git.bsse.ethz.ch/hima_public/HDsort)
   - [Herdingspikes2](https://github.com/mhhennig/hs2)
   - [IronClust](https://github.com/jamesjun/ironclust)
-  - [Kilosort](https://github.com/MouseLand/Kilosort)
-    - 1.0
-    - 2.0
-    - 2.5
-    - 3.0 (git master)
+  - [Kilosort](https://github.com/MouseLand/Kilosort) 1.0, 2.0, 2.5, 3.0 (git master)
   - [Klusta](https://github.com/kwikteam/klusta)
-  - ~[Mountainsort4](https://github.com/flatironinstitute/mountainsort)~
-    - not yet working
-  - ~[SpykingCircus](https://spyking-circus.readthedocs.io/)~
-    - not yet working
   - [Tridesclous](https://tridesclous.readthedocs.io/)
   - [Waveclus](https://github.com/csn-le/wave_clus)
   - [Combinato](https://github.com/jniediek/combinato)
-  - ~[YASS](https://github.com/paninski-lab/yass)~
-    - not yet working
 
 To do this automatically every time you log on or run a job, add the above line to your `~/.bashrc`:
 
 ```
 echo "source /gpfs/bwfor/work/ws/hd_uk239-measelab/init.sh" >> ~/.bashrc
 ```
-
-Note: all dependencies have for now been installed to this temporary workspace `/gpfs/bwfor/work/ws/hd_uk239-measelab`
-(which all users in `bw20g013` should have read/write access to)
 
 ## SDS
 
