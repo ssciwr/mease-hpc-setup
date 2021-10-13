@@ -81,25 +81,43 @@ def get_scontrol_output(jobid):
     prompt="GPU type required",
 )
 @click.option(
+    "--cpus",
+    type=click.IntRange(1, 32),
+    required=True,
+    default=1,
+    help="Number of cpus required",
+    show_default=True,
+    prompt="Number of cpus required",
+)
+@click.option(
+    "--memory",
+    type=click.IntRange(16, 360),
+    required=True,
+    default=60,
+    help="Memory required in GB",
+    show_default=True,
+    prompt="Memory required in GB",
+)
+@click.option(
     "-v",
     "--verbose",
     default=False,
     is_flag=True,
     help="Verbose output",
 )
-def submit(runtime, gpu_type, verbose):
+def submit(runtime, gpu_type, cpus, memory, verbose):
     sbatch_options = "--partition=single"
     with_gpu = gpu_type != "none"
     if with_gpu:
-        sbatch_options = f"--partition=gpu-single --gres=gpu{':1' if gpu_type == 'any' else ':' + gpu_type + ':1'}"
+        sbatch_options = f"--partition=gpu-single --cpus-per-gpu={cpus} --gres=gpu{':1' if gpu_type == 'any' else ':' + gpu_type + ':1'}"
     minutes = 60 * runtime
-    sbatch_cmd = f"sbatch --parsable -t{minutes} {sbatch_options} --output=.setup-jupyter-log.txt setup-jupyter-start"
+    sbatch_cmd = f"sbatch --parsable -t{minutes} --ntasks-per-node={cpus} --mem={memory}gb {sbatch_options} --output=.setup-jupyter-log.txt setup-jupyter-start"
     if verbose:
         print("# sbatch command: " + sbatch_cmd)
     print()
     job_id = subprocess.getoutput(sbatch_cmd)
     print(
-        f"Submitted {runtime}-hour {gpu_type + ' GPU ' if with_gpu else ''}job with id {job_id}.",
+        f"Submitted {runtime}-hour {cpus}-CPU, {memory}gb memory{', ' + gpu_type + ' GPU' if with_gpu else ''} job with id {job_id}.",
         flush=True,
     )
     print(
