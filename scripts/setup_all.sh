@@ -18,6 +18,8 @@ cp init.sh $INSTALL/init.sh
 
 bash setup_setup_jupyter.sh
 
+bash setup_mease_elabftw.sh
+
 # sorters
 
 # bash setup_yass.sh $INSTALL
