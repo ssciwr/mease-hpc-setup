@@ -1,14 +1,33 @@
 # Mease Lab HPC Setup
 
-Instructions / reference information for using [mease-lab-to-nwb](https://github.com/ssciwr/mease-lab-to-nwb) on the MLS&WISO
+Instructions / reference information for using [mease-lab-to-nwb](https://github.com/ssciwr/mease-lab-to-nwb) on the [MLS&WISO bwForCluster](https://wiki.bwhpc.de/e/Category:BwForCluster_MLS%26WISO_Production).
+
+## Account registration
+
+Register for an account (see [BwForCluster_User_Access](https://wiki.bwhpc.de/e/BwForCluster_User_Access) for full instructions):
+
+- [Join the RV](https://www.bwhpc-c5.de/en/ZAS/bwforcluster_collaboration.php)
+  - You'll need an acronym and password from your advisor
+  - Submit them in your request to join the RV as a coworker at the link above
+- [Get permission from the University](https://bwforcluster.urz.uni-heidelberg.de/)
+  - This is a separate step from joining the RV
+- [Set up 2FA](https://bwservices.uni-heidelberg.de/user/twofa.xhtml)
+  - 2-factor authentication using an authenticator app on your phone, e.g. Google Authenticator
+  - The app then displays a new 6-digit code every 30 seconds
+  - Use this code when asked for an OTP (one-time password) when logging in the cluster
+- [Set a service password](https://bwservices.uni-heidelberg.de/)
+  - After logging in with your uniid, you should see a list of services
+  - Register for "bwForCluster MLS&WISO Production" and set a service password
 
 ## Initial setup
 
-Log in to the cluser
+Log in to the cluster with username `hd_UNIID`, where `UNIID` is your uni-id:
 
 ```
 ssh hd_ab213@bwforcluster.bwservices.uni-heidelberg.de
 ```
+
+It will ask you for your service password, and your OTP (the current 6-digit token from your authenticator app)
 
 After logging into the cluster, do
 
