@@ -55,12 +55,3 @@ Note: If step 2 doesn't work in your ssh client, you can instead open a new comm
 
 ssh -L57191:h11c1111:57191 hd_xx123@bwforcluster.bwservices.uni-heidelberg.de
 ```
-
-## Tips
-
-- When you are finished using the notebook, go to "File -> Shutdown" so that the job on HPC is also stopped, otherwise it will keep running there for the allocated time.
-- On your ssh connection to the cluster, you can see all of your current jobs (queued and running) with `squeue`
-  - If you have any jobs queued or running that you won't use any more, cancel them with `scancel JOBID`, where `JOBID` is the number displayed by `squeue`
-- If you prefer the jupyter notebook interface to jupyter lab, go to "Help -> Launch Classic Notebook"
-- SDS files are located at `/mnt/sds-hd/sd19b001`
-  - Make sure you did `kinit` after logging in to have access to these

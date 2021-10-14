@@ -81,8 +81,25 @@ To use it, type
 setup-jupyter
 ```
 
-and follow the instructions.
-See [setup-jupyter](https://github.com/ssciwr/mease-hpc-setup/tree/main/setup-jupyter) for more information.
+- it will ask you how long you need the job to run for, how much RAM you need, how many cpus, etc.
+- it will then submit a batch job to the queue and wait for it to start running
+  - if it doesn't start running after a few minutes, there may be no available nodes with the specs you asked for
+  - to get something to run now, consider trying again with reduced requirements, e.g. `any` for gpu, `60` for gb of RAM
+- once the job is running, it prints out instructions for how to set up an ssh tunnel to access the jupyter lab server remotely
+- as well as the web address where you can then access the jupyter notebook from your web browser
+
+Type `setup-jupyter --help` or see [setup-jupyter](https://github.com/ssciwr/mease-hpc-setup/tree/main/setup-jupyter) for more information.
+
+### Tips
+
+- If you prefer the jupyter notebook interface to jupyter lab, go to "Help -> Launch Classic Notebook"
+  - For nwbwidgets to display properly you currently need to use the classic notebook interface
+- SDS files are located at `/mnt/sds-hd/sd19b001`
+  - Make sure you did `kinit` after logging in to have access to these
+- When you are finished using jupyter, go to "File -> Shutdown"
+  - This stops the job running on HPC, otherwise it will keep running there for the entire allocated time.
+- On your ssh connection to the cluster, you can see all of your current jobs (queued and running) with `squeue`
+  - If you have any jobs queued or running that you won't use any more, you can cancel them with `scancel JOBID`, where `JOBID` is the number displayed by `squeue`
 
 ## Interactive command-line use
 
@@ -99,8 +116,7 @@ srun --partition=gpu-single --ntasks=1 --time=0:30:00 --nodes=1 --ntasks-per-nod
 ```
 
 This asks for 30mins with 1 cpu, 1 RTX2080 GPU, and 64GB of ram.
-Other GPU types available are listed here:
-https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Hardware#Coprocessor_Nodes
+Other GPU types available are listed in [this table](https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Hardware#Coprocessor_Nodes)
 
 If you don't mind which type of GPU you get, you can simply use
 
