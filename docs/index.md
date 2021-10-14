@@ -85,12 +85,17 @@ setup-jupyter
 - it will then submit a batch job to the queue and wait for it to start running
   - if it doesn't start running after a few minutes, there may be no available nodes with the specs you asked for
   - to get something to run now, consider trying again with reduced requirements, e.g. `any` for gpu, `60` for gb of RAM
-- once the job is running, it prints out instructions for how to set up an ssh tunnel to access the jupyter lab server remotely
-- as well as the web address where you can then access the jupyter notebook from your web browser
+- once the job is running, it prints out instructions for what to do next
+  - open an ssh shell within your terminal with the escape key sequence: `Enter`, `~`, `C`
+    - if this works you'll see a new line starting with `ssh>`
+  - copy and paste the line starting with `-L` and press `Enter`
+    - it should then say `Forwarding port.`
+    - press `Enter` again to return to the normal command line
+  - open the web address starting with `localhost:` in your web browser
 
 Type `setup-jupyter --help` or see [setup-jupyter](https://github.com/ssciwr/mease-hpc-setup/tree/main/setup-jupyter) for more information.
 
-### Tips
+### Jupyter tips
 
 - If you prefer the jupyter notebook interface to jupyter lab, go to "Help -> Launch Classic Notebook"
   - For nwbwidgets to display properly you currently need to use the classic notebook interface
