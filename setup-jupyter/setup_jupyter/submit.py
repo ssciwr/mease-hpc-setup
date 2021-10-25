@@ -34,15 +34,34 @@ def get_jupyter_lab_info(job_id):
         return None
 
 
-def get_scontrol_output(jobid):
+def get_scontrol_output(job_id):
     data = {}
-    scontrol_output = subprocess.getoutput(f"scontrol show job {jobid}")
+    scontrol_output = subprocess.getoutput(f"scontrol show job {job_id}")
     for item in scontrol_output.split():
         pair = item.split("=")
         if len(pair) == 2:
             key, value = pair
             data[key] = value
     return data
+
+
+def wait_for_job_to_run(job_id):
+    print(
+        "Job queued...",
+        end="",
+        flush=True,
+    )
+    state = get_scontrol_output(job_id).get("JobState")
+    while not state or state != "RUNNING":
+        try:
+            print(".", end="", flush=True)
+            time.sleep(2)
+            state = get_scontrol_output(job_id).get("JobState")
+        except KeyboardInterrupt:
+            print(f"\nCancelling job {job_id}.")
+            print(subprocess.getoutput(f"scancel {job_id}"))
+            sys.exit()
+    print(f"job running.", flush=True)
 
 
 @click.command()
@@ -113,28 +132,12 @@ def submit(runtime, gpu_type, cpus, memory, verbose):
     sbatch_cmd = f"sbatch --parsable -t{minutes} --ntasks-per-node={cpus} --mem={memory}gb {sbatch_options} --output=.setup-jupyter-log.txt setup-jupyter-start"
     if verbose:
         print("# sbatch command: " + sbatch_cmd)
-    print()
     job_id = subprocess.getoutput(sbatch_cmd)
     print(
-        f"Submitted {runtime}-hour {cpus}-CPU, {memory}gb memory{', ' + gpu_type + ' GPU' if with_gpu else ''} job with id {job_id}.",
+        f"\nSubmitted {runtime}-hour {cpus}-CPU, {memory}gb memory{', ' + gpu_type + ' GPU' if with_gpu else ''} job with id {job_id}.",
         flush=True,
     )
-    print(
-        "Job queued...",
-        end="",
-        flush=True,
-    )
-    state = get_scontrol_output(job_id).get("JobState")
-    while not state or state != "RUNNING":
-        try:
-            print(".", end="", flush=True)
-            time.sleep(2)
-            state = get_scontrol_output(job_id).get("JobState")
-        except KeyboardInterrupt:
-            print(f"\nCancelling job {job_id}.")
-            print(subprocess.getoutput(f"scancel {job_id}"))
-            sys.exit()
-    print(f"job running.", flush=True)
+    wait_for_job_to_run(job_id)
     hostname = get_scontrol_output(job_id).get("BatchHost")
     userid = subprocess.getoutput("whoami")
     print("Looking for jupyter server info...", end="", flush=True)
