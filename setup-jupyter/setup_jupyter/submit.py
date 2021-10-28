@@ -85,7 +85,6 @@ def wait_for_job_to_run(job_id):
             "V100",
             "GTX1080",
             "RTX2080",
-            "V100",
             "V100S",
             "RTX3090",
             "RTX8000",

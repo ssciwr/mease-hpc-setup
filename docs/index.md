@@ -50,7 +50,7 @@ You should then be in the `measelab` conda environment, with these programs inst
   - [Waveclus](https://github.com/csn-le/wave_clus)
   - [Combinato](https://github.com/jniediek/combinato)
 
-To do this automatically every time you log on or run a job, add the above line to your `~/.bashrc`:
+To do this automatically every time you log on or run a job (recommended), add the above line to your `~/.bashrc` with this command:
 
 ```
 echo "source /gpfs/bwfor/work/ws/hd_uk239-measelab/init.sh" >> ~/.bashrc
@@ -105,6 +105,10 @@ Type `setup-jupyter --help` or see [setup-jupyter](https://github.com/ssciwr/mea
   - This stops the job running on HPC, otherwise it will keep running there for the entire allocated time.
 - On your ssh connection to the cluster, you can see all of your current jobs (queued and running) with `squeue`
   - If you have any jobs queued or running that you won't use any more, you can cancel them with `scancel JOBID`, where `JOBID` is the number displayed by `squeue`
+- If you are stuck in the queue waiting for your job to start, consider reducing your requirements
+  - The RAM, CPU & GPU for each type of node are listed [here](https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Hardware#CPU_Nodes)
+  - The actual RAM available is a little bit less than the listed values
+  - You can see a list of idle nodes (but unfortunately not which specific GPU types are idle) with `sinfo_t_idle`
 
 ## Interactive command-line use
 
