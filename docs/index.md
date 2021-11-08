@@ -110,6 +110,37 @@ Type `setup-jupyter --help` or see [setup-jupyter](https://github.com/ssciwr/mea
   - The actual RAM available is a little bit less than the listed values
   - You can see a list of idle nodes (but unfortunately not which specific GPU types are idle) with `sinfo_t_idle`
 
+## bwVisu
+
+This is a new service for using graphical user interface programs - in particular Phy - on HPC.
+
+### Account registration
+
+- Assumes you have already set up your MLS&WISO HPC account
+- [Set a service password](https://bwservices.uni-heidelberg.de/)
+  - After logging in with your uniid, you should see a list of services
+  - Register for "bwVisu" and set a service password
+
+### Login
+
+- go to https://bwvisu-web.urz.uni-heidelberg.de/accounts/login
+- login in using
+  - username: `hd_UNIID`, where `UNIID` is your uni-id (same as for MLS&WISO ssh login)
+  - password: is the bwVisu service password you set above (*not* the same as your MLS&WISO service password!)
+  - OTP: the current 6-digit token displayed in your authenticator app (same as for MLS&WISO ssh login)
+
+### Use
+
+- scroll down to Phy, then click on the blue "v2" button
+- click the green "Start new job" button, enter runtime and press "start" again
+- click on the new "Phy - v2 xyz123" button under "Running jobs"
+- click on the Xpra Web Client link to open Phy in a new webpage
+- Press "Enter" to close a dialog box that may or may not be initially visible
+- You should then see a dialog box asking you to choose your params.py file
+  - The "Home" directory is your home directory on MLS&WISO
+  - For SDS: Other locations -> Computer -> mnt -> sds-hd -> sd19b001
+  - Note: for SDS access you need to have an active kerberos ticket on MLS&WISO
+
 ## Interactive command-line use
 
 To see how many idle nodes with GPUs attached are currently available:
