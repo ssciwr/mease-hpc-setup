@@ -123,7 +123,7 @@ This is a new service for using graphical user interface programs - in particula
 
 ### Login
 
-- go to https://bwvisu-web.urz.uni-heidelberg.de/accounts/login
+- go to [bwvisu-web.urz.uni-heidelberg.de/accounts/login](https://bwvisu-web.urz.uni-heidelberg.de/accounts/login)
 - login in using
   - username: `hd_UNIID`, where `UNIID` is your uni-id (same as for MLS&WISO ssh login)
   - password: is the bwVisu service password you set above (*not* the same as your MLS&WISO service password!)
