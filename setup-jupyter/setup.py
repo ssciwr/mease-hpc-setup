@@ -8,7 +8,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="setup_jupyter",
-    version="0.0.1",
+    version="0.1.0",
     author="Liam Keegan",
     author_email="liam@keegan.ch",
     description="Script to run jupyter server on HPC",
@@ -20,6 +20,7 @@ setup(
     entry_points={
         "console_scripts": [
             "setup-jupyter = setup_jupyter.submit:submit",
+            "find-jupyter = setup_jupyter.find:find",
             "setup-jupyter-start = setup_jupyter.start:start",
         ]
     },
