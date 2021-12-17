@@ -24,12 +24,15 @@ def print_instructions(port, hostname, userid, token):
     )
 
 
-def get_jupyter_lab_info(job_id):
+def get_jupyter_lab_servers(job_id):
     jupyter_data = subprocess.getoutput(
         f"srun --jobid={job_id} jupyter lab list --jsonlist"
     )
     try:
-        return json.loads(jupyter_data)[0]
+        data = json.loads(jupyter_data)
+        if len(data) > 1:
+            print("** Warning: multiple running jupyter servers found **")
+        return data
     except:
         return None
 
@@ -68,10 +71,11 @@ def wait_for_info_and_print(job_id):
     hostname = get_scontrol_output(job_id).get("BatchHost")
     userid = subprocess.getoutput("whoami")
     print("Looking for jupyter server info...", end="", flush=True)
-    info = get_jupyter_lab_info(job_id)
+    servers = get_jupyter_lab_servers(job_id)
     while not info:
         print(".", end="", flush=True)
         time.sleep(2)
-        info = get_jupyter_lab_info(job_id)
+        servers = get_jupyter_lab_servers(job_id)
     print(f"found.", flush=True)
-    print_instructions(info["port"], hostname, userid, info["token"])
+    for server in servers:
+        print_instructions(server["port"], hostname, userid, server["token"])

@@ -1,10 +1,10 @@
 import subprocess
-from random import randint
+import random
 import click
 
 
 def get_random_port(min_port=50000, max_port=59999):
-    return randint(min_port, max_port)
+    return random.randint(min_port, max_port)
 
 
 @click.command()
