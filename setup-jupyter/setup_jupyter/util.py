@@ -72,7 +72,7 @@ def wait_for_info_and_print(job_id):
     userid = subprocess.getoutput("whoami")
     print("Looking for jupyter server info...", end="", flush=True)
     servers = get_jupyter_lab_servers(job_id)
-    while not info:
+    while not servers:
         print(".", end="", flush=True)
         time.sleep(2)
         servers = get_jupyter_lab_servers(job_id)
