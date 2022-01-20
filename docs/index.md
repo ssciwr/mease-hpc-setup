@@ -98,7 +98,7 @@ Type `setup-jupyter --help` or see [setup-jupyter](https://github.com/ssciwr/mea
 ### Jupyter tips
 
 - If you prefer the jupyter notebook interface to jupyter lab, go to "Help -> Launch Classic Notebook"
-  - For nwbwidgets to display properly you currently need to use the classic notebook interface
+- The Jupyter working directory will be the same directory you ran `setup-jupyter` from
 - SDS files are located at `/mnt/sds-hd/sd19b001`
   - Make sure you did `kinit` after logging in to have access to these
 - When you are finished using jupyter, go to "File -> Shutdown"
