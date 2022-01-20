@@ -16,6 +16,7 @@ Python script to help with setting up a remote jupyter server instance on HPC
 2. Submit a jupyter lab server job
 
 - `setup-jupyter`
+  - note: the jupyter working directory will be the directory you run this command from
 - choose how long it should run, and if you want a GPU (optionally which kind)
 - the job is submitted to the queue
 - once it is running, instructions for how to access the jupyter notebook are displayed
