@@ -158,6 +158,8 @@ srun --partition=gpu-single --ntasks=1 --time=0:30:00 --nodes=1 --ntasks-per-nod
 This asks for 30mins with 1 cpu, 1 RTX2080 GPU, and 64GB of ram.
 Other GPU types available are listed in [this table](https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Hardware#Coprocessor_Nodes)
 
+(Note not all of the system RAM is available, e.g. if the machine has 64gb the most you can ask for is around 60gb)
+
 If you don't mind which type of GPU you get, you can simply use
 
 ```
@@ -171,3 +173,9 @@ the source line to your `~/.bashrc` file you will have to run it again manually.
 
 Longer jobs can be submitted as batch jobs to a queue, and will run when resources are available.
 See https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Slurm for more information.
+
+If you have a running batch job and you want to log in to the node where it is running you can do
+```
+srun --jobid=123456 --pty /bin/bash
+```
+Then e.g. `htop` to see CPU/RAM use, or `nvidia-smi` to see GPU use.
