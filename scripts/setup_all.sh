@@ -38,6 +38,8 @@ bash setup_kilosort2.sh $INSTALL
 
 bash setup_kilosort2_5.sh $INSTALL
 
+bash setup_kilosort2_5_solve_zero_padding.sh $INSTALL
+
 bash setup_kilosort3.sh $INSTALL
 
 bash setup_klusta.sh $INSTALL
