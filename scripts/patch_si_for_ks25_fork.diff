@@ -1,0 +1,18 @@
+--- /home/hd/hd_hd/hd_uk239/k   2022-04-01 11:41:42.995708000 +0200
++++ /gpfs/bwfor/work/ws/hd_uk239-measelab/miniconda3/envs/measelab/lib/python3.8/site-packages/spikeinterface/sorters/kilosort2_5/kilosort2_5_master.m  2022-04-01 11:41:11.457507000 +0200
+@@ -45,6 +45,15 @@
+ 
+     fprintf('found %d good units \n', sum(rez.good>0))
+ 
++if((exist('correct_time') == 2) && (exist('rewrite_temp_wh') == 2))
++  fprintf('SOLVE_ZERO_PADDING: correcting times & rewriting temp_wh\n')
++  % correct times for the deleted batches
++  rez=correct_time(rez);
++ 
++  % rewrite temp_wh to the original length
++  rewrite_temp_wh(ops)
++end
++
+     % write to Phy
+     fprintf('Saving results to Phy  \n')
+     rezToPhy(rez, fullfile(fpath));
