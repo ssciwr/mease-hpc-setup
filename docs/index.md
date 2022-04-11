@@ -109,6 +109,11 @@ Type `setup-jupyter --help` or see [setup-jupyter](https://github.com/ssciwr/mea
   - The RAM, CPU & GPU for each type of node are listed [here](https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Hardware#CPU_Nodes)
   - The actual RAM available is a little bit less than the listed values
   - You can see a list of idle nodes (but unfortunately not which specific GPU types are idle) with `sinfo_t_idle`
+- If you run out of disk space in your home directory you can get various errors
+  - e.g. `File Load Error` when trying to open a notebook
+  - Deleting files from within jupyterlab doesn't actually delete them but moves them to a trash folder
+    - To see how much space this is taking up: `du -sh .local/share/Trash`
+    - To empty out the trash folder: `rm -rf .local/share/Trash`
 
 ## bwVisu
 
