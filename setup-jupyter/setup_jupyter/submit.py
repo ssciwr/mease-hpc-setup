@@ -65,7 +65,7 @@ def submit(runtime, gpu_type, cpus, memory, verbose):
     sbatch_options = "--partition=single"
     with_gpu = gpu_type != "none"
     if with_gpu:
-        sbatch_options = f"--partition=gpu-single --cpus-per-gpu={cpus} --gres=gpu{':1' if gpu_type == 'any' else ':' + gpu_type + ':1'}"
+        sbatch_options = f"--partition=gpu-single --gres=gpu{':1' if gpu_type == 'any' else ':' + gpu_type + ':1'}"
     minutes = 60 * runtime
     sbatch_cmd = f"sbatch --parsable -t{minutes} --ntasks-per-node={cpus} --mem={memory}gb {sbatch_options} --output=.setup-jupyter-log.txt setup-jupyter-start"
     if verbose:
