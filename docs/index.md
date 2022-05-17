@@ -157,7 +157,7 @@ sinfo_t_idle | grep "gpu-single"
 To run an interactive job on one of these nodes (i.e. log on to it and run commands there):
 
 ```
-srun --partition=gpu-single --ntasks=1 --time=0:30:00 --nodes=1 --ntasks-per-node=1 --cpus-per-gpu=1 --mem=64gb --gres=gpu:RTX2080:1 --pty /bin/bash
+srun --partition=gpu-single --ntasks=1 --time=0:30:00 --nodes=1 --ntasks-per-node=1 --mem=64gb --gres=gpu:RTX2080:1 --pty /bin/bash
 ```
 
 This asks for 30mins with 1 cpu, 1 RTX2080 GPU, and 64GB of ram.
@@ -216,7 +216,6 @@ The file `slurm-1271232.out` and the folder `/mnt/sds-hd/sd19b001/Liam/ECE_testi
 
 #SBATCH --partition=gpu-single
 #SBATCH --nodes=1
-#SBATCH --cpus-per-gpu=12
 #SBATCH --ntasks-per-node=12
 #SBATCH --gres=gpu:1
 #SBATCH --time=1:00:00
