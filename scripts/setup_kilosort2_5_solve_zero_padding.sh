@@ -1,5 +1,7 @@
 set -e -x
 
+WKDIR=$(pwd)
+
 cd $1
 
 source init.sh
@@ -16,4 +18,4 @@ matlab -nodesktop -nosplash -r "mexGPUall;quit"
 # https://github.com/SpikeInterface/spikeinterface/blob/master/spikeinterface/sorters/kilosort2_5/kilosort2_5_master.m
 # and this file is modified in the solve_zero_padding fork
 # patch checks if extra functions in fork exist, and if so it calls them
-patch --verbose miniconda3/envs/measelab/lib/python3.8/site-packages/spikeinterface/sorters/kilosort2_5/kilosort2_5_master.m patch_si_for_ks25_fork.diff
+patch --verbose miniconda3/envs/measelab/lib/python3.8/site-packages/spikeinterface/sorters/kilosort2_5/kilosort2_5_master.m $WKDIR/patch_si_for_ks25_fork.diff
