@@ -13,6 +13,7 @@ git clone -b solve_zero_padding git@github.com:RobertoDF/Kilosort.git Kilosort-2
 # compile kilosort 2.5 GPU matlab code
 cd Kilosort-2.5_solve_zero_padding/CUDA
 matlab -nodesktop -nosplash -r "mexGPUall;quit"
+cd ..
 
 # also need to patch spikeinterface, since it generates a kilosort_main.m:
 # https://github.com/SpikeInterface/spikeinterface/blob/master/spikeinterface/sorters/kilosort2_5/kilosort2_5_master.m
