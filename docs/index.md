@@ -19,7 +19,7 @@ Register for an account (see [BwForCluster_User_Access](https://wiki.bwhpc.de/e/
   - After logging in with your uniid, you should see a list of services
   - Register for "bwForCluster MLS&WISO Production" and set a service password
 
-## Initial setup
+## Login
 
 Log in to the cluster with username `hd_UNIID`, where `UNIID` is your uni-id:
 
@@ -28,33 +28,6 @@ ssh hd_ab123@bwforcluster.bwservices.uni-heidelberg.de
 ```
 
 It will ask you for your bwForCluster service password, and your OTP (the current 6-digit token displayed in your authenticator app)
-
-After logging into the cluster, do
-
-```
-source /gpfs/bwfor/work/ws/hd_uk239-measelab/init.sh
-```
-
-You should then be in the `measelab` conda environment, with these programs installed & on path:
-
-- matlab
-- [mease-lab-to-nwb](https://github.com/ssciwr/mease-lab-to-nwb)
-- [setup-jupyter](https://github.com/ssciwr/mease-hpc-setup/setup-jupyter)
-- spike sorters
-  - [HDSort](https://git.bsse.ethz.ch/hima_public/HDsort)
-  - [Herdingspikes2](https://github.com/mhhennig/hs2)
-  - [IronClust](https://github.com/jamesjun/ironclust)
-  - [Kilosort](https://github.com/MouseLand/Kilosort) 1.0, 2.0, 2.5, 3.0 (git master)
-  - [Klusta](https://github.com/kwikteam/klusta)
-  - [Tridesclous](https://tridesclous.readthedocs.io/)
-  - [Waveclus](https://github.com/csn-le/wave_clus)
-  - [Combinato](https://github.com/jniediek/combinato)
-
-To do this automatically every time you log on or run a job (recommended), add the above line to your `~/.bashrc` with this command:
-
-```
-echo "source /gpfs/bwfor/work/ws/hd_uk239-measelab/init.sh" >> ~/.bashrc
-```
 
 ## SDS
 
@@ -70,6 +43,35 @@ The files are then located at
 
 ```
 /mnt/sds-hd/sd19b001
+```
+
+## Initial setup
+
+Once you are logged in and can access SDS, do
+
+```
+source /mnt/sds-hd/sd19b001/HPC_INSTALLATION/init.sh
+```
+
+You should then be in the `measelab` conda environment, with these programs installed & on path:
+
+- matlab
+- [mease-lab-to-nwb](https://github.com/ssciwr/mease-lab-to-nwb)
+- [setup-jupyter](https://github.com/ssciwr/mease-hpc-setup/setup-jupyter)
+- spike sorters
+  - [HDSort](https://git.bsse.ethz.ch/hima_public/HDsort)
+  - [Herdingspikes2](https://github.com/mhhennig/hs2)
+  - [IronClust](https://github.com/jamesjun/ironclust)
+  - [Kilosort](https://github.com/MouseLand/Kilosort) 1.0, 2.0, 2.5, 2.5 (solve_zero_padding fork), 3.0 (git master)
+  - [Klusta](https://github.com/kwikteam/klusta)
+  - [Tridesclous](https://tridesclous.readthedocs.io/)
+  - [Waveclus](https://github.com/csn-le/wave_clus)
+  - [Combinato](https://github.com/jniediek/combinato)
+
+To do this automatically every time you log on or run a job (recommended), add the above line to your `~/.bashrc` with this command:
+
+```
+echo "source /mnt/sds-hd/sd19b001/HPC_INSTALLATION/init.sh" >> ~/.bashrc
 ```
 
 ## Interactive Jupyter use

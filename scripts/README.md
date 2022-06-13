@@ -3,10 +3,10 @@
 Some notes on the installation on MLS&WISO,
 (hopefully) not relevant for the end user.
 
-The initial idea is just to install everything locally,
+The initial idea is just to install everything in a folder,
 then share this location along with a script for the user to source,
 which puts everything in PATH, loads the relevant modules,
-and activates the conde env.
+and activates the conda env.
 
 ## Location
 
@@ -14,7 +14,15 @@ All files are now installed on SDS:
 
 - `/mnt/sds-hd/sd19b001/HPC_INSTALLATION`
 
-### Previous location
+## Reproducibility
+
+To recreate the HPC installation:
+
+- remove all files in `/mnt/sds-hd/sd19b001/HPC_INSTALLATION`
+- run `setup_all.sh` which should reinstall everything from scratch
+- note: for ironclust gpu support, `compile_gpu.sh` also needs to run on a node with a GPU
+
+### Previous location (no longer in use)
 
 Temporary workspace allocated for 30 days with:
 
@@ -52,14 +60,3 @@ To renew the workspace for another 30 days from now:
 ```
 ws_extend measelab 30
 ```
-
-## Reproducibility
-
-For now just a bunch of bash scripts:
-
-- wipe workspace then run `setup_all.sh` should reinstall everything from scratch
-- after that, `compile_gpu.sh` needs to run on a node with the GPU
-
-Todo:
-
-- integrate the compile_gpu step into setup_all as a job?

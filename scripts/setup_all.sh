@@ -56,6 +56,6 @@ bash setup_waveclus.sh $INSTALL
 # this step currently needs to be done manually
 # on a node with a GPU installed:
 
-# srun --partition=gpu-single --ntasks=1 --time=0:30:00 --nodes=1 --ntasks-per-node=1 --cpus-per-gpu=1 --gres=gpu:RTX2080:1 --pty /bin/bash
+# srun --partition=gpu-single --ntasks=1 --time=0:30:00 --nodes=1 --ntasks-per-node=1 --gres=gpu:RTX2080:1 --pty /bin/bash
 
 # bash compile_gpu.sh $INSTALL
