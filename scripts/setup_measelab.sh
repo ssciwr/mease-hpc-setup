@@ -9,10 +9,8 @@ source miniconda3/etc/profile.d/conda.sh
 export GIT_SSL_NO_VERIFY=true
 
 # clone mease-lab-to-nwb
-git clone https://github.com/lkeegan/mease-lab-to-nwb.git
+git clone https://github.com/ssciwr/mease-lab-to-nwb.git
 cd mease-lab-to-nwb
-
-#git checkout expand_env_deps # skip this as pytorch install currently hangs on hpc
 
 # create conda env
 conda env create -f mease-env.yml

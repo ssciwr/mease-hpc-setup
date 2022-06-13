@@ -1,6 +1,6 @@
 set -e -x
 
-INSTALL=/gpfs/bwfor/work/ws/hd_uk239-measelab
+INSTALL=/mnt/sds-hd/sd19b001/HPC_INSTALLATION
 
 # miniconda
 
@@ -12,7 +12,8 @@ bash setup_measelab.sh $INSTALL
 
 # init script for users (also used by the rest of the setup scripts below)
 
-cp init.sh $INSTALL/init.sh
+echo "export MEASE_HPC_INSTALL=$INSTALL" > $INSTALL/init.sh
+cat init.sh >> $INSTALL/init.sh
 
 # helper script for starting jupyter server
 

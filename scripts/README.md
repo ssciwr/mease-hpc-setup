@@ -10,6 +10,12 @@ and activates the conde env.
 
 ## Location
 
+All files are now installed on SDS:
+
+- `/mnt/sds-hd/sd19b001/HPC_INSTALLATION`
+
+### Previous location
+
 Temporary workspace allocated for 30 days with:
 
 ```
@@ -46,18 +52,6 @@ To renew the workspace for another 30 days from now:
 ```
 ws_extend measelab 30
 ```
-
-Should find a better long term solution here, but this
-should be ok for testing purposes.
-
-Todo:
-
-- see if read-only access would still allow everything to run
-- find long term alternative
-- better way to do this
-  - singularity container? (will GPU etc work?)
-  - spack packages for sorters?
-  - get them installed by urz as modules? (kilosort2 is already on there)
 
 ## Reproducibility
 
