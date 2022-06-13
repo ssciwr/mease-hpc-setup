@@ -17,9 +17,9 @@ cat init.sh >> $INSTALL/init.sh
 
 # helper script for starting jupyter server
 
-bash setup_setup_jupyter.sh
+bash setup_setup_jupyter.sh $INSTALL
 
-bash setup_mease_elabftw.sh
+bash setup_mease_elabftw.sh $INSTALL
 
 # sorters
 
