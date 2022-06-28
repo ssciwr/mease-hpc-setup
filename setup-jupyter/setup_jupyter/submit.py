@@ -19,7 +19,6 @@ import setup_jupyter.util as util
         [
             "none",
             "any",
-            "K80",
             "TITAN",
             "V100",
             "GTX1080",

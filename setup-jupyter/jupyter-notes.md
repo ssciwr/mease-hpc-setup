@@ -1,6 +1,6 @@
 # Jupyter Notes
 
-Notes on setting up and using a remote jupyter server on the cluster.
+Notes on **manually** setting up and using a remote jupyter server on the cluster.
 
 ## Server setup
 
