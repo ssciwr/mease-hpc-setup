@@ -192,7 +192,9 @@ the source line to your `~/.bashrc` file you will have to run it again manually.
 ## Batch jobs
 
 Longer jobs can be submitted as batch jobs to a queue, and will run when resources are available.
-See https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Slurm for more information.
+
+See https://github.com/ssciwr/mease-hpc-setup/tree/main/examples for some examples of this,
+and https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Slurm for more information on the batch system.
 
 If you have a running batch job and you want to log in to the node where it is running you can do
 ```
