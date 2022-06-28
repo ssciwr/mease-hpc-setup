@@ -45,6 +45,9 @@ The files are then located at
 /mnt/sds-hd/sd19b001
 ```
 
+Note: Typing `kinit` gives you SDS access for 10 days,
+after this it will expire and you will have to type `kinit` again.
+
 ## Initial setup
 
 Once you are logged in and can access SDS, do
@@ -73,6 +76,16 @@ To do this automatically every time you log on or run a job (recommended), add t
 ```
 echo "source /mnt/sds-hd/sd19b001/HPC_INSTALLATION/init.sh" >> ~/.bashrc
 ```
+
+Then each time you login you should see `(measelab)` at the start of your command line
+to show that you are in the measelab conda environment.
+
+If you login and instead see
+```
+-bash: /mnt/sds-hd/sd19b001/HPC_INSTALLATION/init.sh: Permission denied
+```
+then most likely your SDS access has expired: renew it by typing `kinit`,
+and then activate the measelab environment with `source /mnt/sds-hd/sd19b001/HPC_INSTALLATION/init.sh`
 
 ## Interactive Jupyter use
 
