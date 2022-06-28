@@ -35,8 +35,10 @@ Python script to help with setting up a remote jupyter server instance on HPC
 (measelab) [hd_xx123@login3 setup_jupyter]$ setup-jupyter
 Job runtime in hours [1]: 2
 GPU type required (none, any, TITAN, V100, GTX1080, RTX2080, V100, V100S, RTX3090, RTX8000) [any]:
+Number of cpus required [1]: 12
+Memory required in GB [60]: 60
 
-Submitted 2-hour any GPU job with id 787623...job started.
+Submitted 2-hour 12-CPU, 60gb memory, any GPU job with id 787623...job started.
 Looking for jupyter server info....found.
 
  To access the jupyter notebook:
