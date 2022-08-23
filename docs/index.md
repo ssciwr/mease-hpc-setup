@@ -3,14 +3,14 @@
 Instructions / reference information for using [mease-lab-to-nwb](https://github.com/ssciwr/mease-lab-to-nwb)
 on the [bwForCluster Helix](https://wiki.bwhpc.de/e/Helix).
 
-*Important*: The previous [bwForCluster MLS&WISO](https://wiki.bwhpc.de/e/Category:BwForCluster_MLS%26WISO_Production)
+_Important_: The previous [bwForCluster MLS&WISO](https://wiki.bwhpc.de/e/Category:BwForCluster_MLS%26WISO_Production)
 has been replaced by [bwForCluster Helix](https://wiki.bwhpc.de/e/Helix)
 
 ## Migration to the new cluster
 
-If you were already using MLS&WISO:
+If you were already using MLS&WISO with username `hd_ab123`:
 
-- Register for "bwForCluster Helix" at https://bwservices.uni-heidelberg.de and set a service password
+- Register for "bwForCluster Helix" at [bwservices.uni-heidelberg.de](https://bwservices.uni-heidelberg.de) and set a service password
 - You can then login with `ssh hd_ab123@helix.bwservices.uni-heidelberg.de` using this service password (OTP as before)
 - SDS is still in the same place, `kinit` no longer required: `/mnt/sds-hd/sd19b001`
 - Your old home directory is accessible (read-only) at: `/mnt/mls_home/hd/hd_hd/hd_ab123`
@@ -110,13 +110,13 @@ Type `setup-jupyter --help` or see [setup-jupyter](https://github.com/ssciwr/mea
 - If you prefer the jupyter notebook interface to jupyter lab, go to "Help -> Launch Classic Notebook"
 - The Jupyter working directory will be the same directory you ran `setup-jupyter` from
 - SDS files are located at `/mnt/sds-hd/sd19b001`
-  - Make sure you did `kinit` after logging in to have access to these
 - When you are finished using jupyter, go to "File -> Shutdown"
   - This stops the job running on HPC, otherwise it will keep running there for the entire allocated time.
 - On your ssh connection to the cluster, you can see all of your current jobs (queued and running) with `squeue`
   - If you have any jobs queued or running that you won't use any more, you can cancel them with `scancel JOBID`, where `JOBID` is the number displayed by `squeue`
+- If you have lost your connection to a running jupyter server, try `find-jupyter`
 - If you are stuck in the queue waiting for your job to start, consider reducing your requirements
-  - The RAM, CPU & GPU for each type of node are listed [here](https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Hardware#CPU_Nodes)
+  - The RAM, CPU & GPU for each type of node are listed [here](https://wiki.bwhpc.de/e/Helix/Hardware#Compute_Nodes)
   - The actual RAM available is a little bit less than the listed values
   - You can see a list of idle nodes (but unfortunately not which specific GPU types are idle) with `sinfo_t_idle`
 - If you run out of disk space in your home directory you can get various errors
@@ -158,20 +158,19 @@ This is a new service for using graphical user interface programs - in particula
 
 ## Interactive command-line use
 
-To see how many idle nodes with GPUs attached are currently available:
+To see how many idle nodes are currently available:
 
 ```
-sinfo_t_idle | grep "gpu-single"
+sinfo_t_idle
 ```
 
-To run an interactive job on one of these nodes (i.e. log on to it and run commands there):
+To run an interactive job on a node with a gpu (i.e. log on to it and run commands there):
 
 ```
-srun --partition=gpu-single --ntasks=1 --time=0:30:00 --nodes=1 --ntasks-per-node=1 --mem=64gb --gres=gpu:RTX2080:1 --pty /bin/bash
+srun --partition=single --time=0:30:00 --nodes=1 --ntasks-per-node=1 --mem=16gb --gres=gpu:A40:1 --pty /bin/bash
 ```
 
-This asks for 30mins with 1 cpu, 1 RTX2080 GPU, and 64GB of ram.
-Other GPU types available are listed in [this table](https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Hardware#Coprocessor_Nodes)
+This asks for 30mins with 1 cpu, 1 A40 GPU, and 16GB of ram.
 
 (Note not all of the system RAM is available, e.g. if the machine has 64gb the most you can ask for is around 60gb)
 
@@ -188,8 +187,8 @@ the source line to your `~/.bashrc` file you will have to run it again manually.
 
 Longer jobs can be submitted as batch jobs to a queue, and will run when resources are available.
 
-See https://github.com/ssciwr/mease-hpc-setup/tree/main/examples for some examples of this,
-and https://wiki.bwhpc.de/e/BwForCluster_MLS%26WISO_Production_Slurm for more information on the batch system.
+See [mease-hpc-setup examples](https://github.com/ssciwr/mease-hpc-setup/tree/main/examples)
+or [wiki.bwhpc.de/e/Helix/Slurm](https://wiki.bwhpc.de/e/Helix/Slurm) for more information on the batch system.
 
 If you have a running batch job and you want to log in to the node where it is running you can do
 ```

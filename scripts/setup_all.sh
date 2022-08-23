@@ -2,6 +2,8 @@ set -e -x
 
 INSTALL=/mnt/sds-hd/sd19b001/HPC_INSTALLATION_HELIX
 
+mkdir -p $INSTALL
+
 # miniconda
 
 bash setup_conda.sh $INSTALL
