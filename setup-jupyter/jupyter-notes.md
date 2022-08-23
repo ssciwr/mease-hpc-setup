@@ -35,7 +35,7 @@ In a new terminal, set up a new ssh connection to forward this port on the node 
 (need to enter the OTP and password again):
 
 ```
-ssh -L54736:HOSTNAME:54736 hd_UNIID@bwforcluster.bwservices.uni-heidelberg.de
+ssh -L54736:HOSTNAME:54736 hd_UNIID@helix.bwservices.uni-heidelberg.de
 ```
 
 where

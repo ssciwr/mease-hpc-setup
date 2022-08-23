@@ -1,14 +1,14 @@
 # script to be sourced by users
 
 # make matlab available & set version
-module load math/matlab/R2021a
+module load math/matlab/R2022a
 
 # make cuda available & set version
-module load devel/cuda/11.2
+module load devel/cuda/11.6
 
 # make gcc available & set version
 # note matlab 2021a cuda compilation requires gcc <= 9
-module load compiler/gnu/9.1
+module load compiler/gnu/11.3
 
 # workaround for git ssl isse
 export GIT_SSL_NO_VERIFY=true

@@ -8,7 +8,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="setup_jupyter",
-    version="0.1.0",
+    version="0.2.0",
     author="Liam Keegan",
     author_email="liam@keegan.ch",
     description="Script to run jupyter server on HPC",

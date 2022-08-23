@@ -1,6 +1,19 @@
 # Mease Lab HPC Setup
 
-Instructions / reference information for using [mease-lab-to-nwb](https://github.com/ssciwr/mease-lab-to-nwb) on the [MLS&WISO bwForCluster](https://wiki.bwhpc.de/e/Category:BwForCluster_MLS%26WISO_Production).
+Instructions / reference information for using [mease-lab-to-nwb](https://github.com/ssciwr/mease-lab-to-nwb)
+on the [bwForCluster Helix](https://wiki.bwhpc.de/e/Helix).
+
+*Important*: The previous [bwForCluster MLS&WISO](https://wiki.bwhpc.de/e/Category:BwForCluster_MLS%26WISO_Production)
+has been replaced by [bwForCluster Helix](https://wiki.bwhpc.de/e/Helix)
+
+## Migration to the new cluster
+
+If you were already using MLS&WISO:
+
+- Register for "bwForCluster Helix" at https://bwservices.uni-heidelberg.de and set a service password
+- You can then login with `ssh hd_ab123@helix.bwservices.uni-heidelberg.de` using this service password (OTP as before)
+- SDS is still in the same place, `kinit` no longer required: `/mnt/sds-hd/sd19b001`
+- Your old home directory is accessible (read-only) at: `/mnt/mls_home/hd/hd_hd/hd_ab123`
 
 ## Account registration
 
@@ -17,43 +30,32 @@ Register for an account (see [BwForCluster_User_Access](https://wiki.bwhpc.de/e/
   - Use this code when asked for an OTP (one-time password) when logging in the cluster
 - [Set a service password](https://bwservices.uni-heidelberg.de/)
   - After logging in with your uniid, you should see a list of services
-  - Register for "bwForCluster MLS&WISO Production" and set a service password
+  - Register for "bwForCluster Helix" and set a service password
 
 ## Login
 
 Log in to the cluster with username `hd_UNIID`, where `UNIID` is your uni-id:
 
 ```
-ssh hd_ab123@bwforcluster.bwservices.uni-heidelberg.de
+ssh hd_ab123@helix.bwservices.uni-heidelberg.de
 ```
 
 It will ask you for your bwForCluster service password, and your OTP (the current 6-digit token displayed in your authenticator app)
 
 ## SDS
 
-To get SDS access on the cluster type
-
-```
-kinit
-```
-
-and enter your SDS@hd service password when prompted.
-
-The files are then located at
+The files on SDS are located at
 
 ```
 /mnt/sds-hd/sd19b001
 ```
-
-Note: Typing `kinit` gives you SDS access for 10 days,
-after this it will expire and you will have to type `kinit` again.
 
 ## Initial setup
 
 Once you are logged in and can access SDS, do
 
 ```
-source /mnt/sds-hd/sd19b001/HPC_INSTALLATION/init.sh
+source /mnt/sds-hd/sd19b001/HPC_INSTALLATION_HELIX/init.sh
 ```
 
 You should then be in the `measelab` conda environment, with these programs installed & on path:
@@ -74,18 +76,11 @@ You should then be in the `measelab` conda environment, with these programs inst
 To do this automatically every time you log on or run a job (recommended), add the above line to your `~/.bashrc` with this command:
 
 ```
-echo "source /mnt/sds-hd/sd19b001/HPC_INSTALLATION/init.sh" >> ~/.bashrc
+echo "source /mnt/sds-hd/sd19b001/HPC_INSTALLATION_HELIX/init.sh" >> ~/.bashrc
 ```
 
 Then each time you login you should see `(measelab)` at the start of your command line
 to show that you are in the measelab conda environment.
-
-If you login and instead see
-```
--bash: /mnt/sds-hd/sd19b001/HPC_INSTALLATION/init.sh: Permission denied
-```
-then most likely your SDS access has expired: renew it by typing `kinit`,
-and then activate the measelab environment with `source /mnt/sds-hd/sd19b001/HPC_INSTALLATION/init.sh`
 
 ## Interactive Jupyter use
 

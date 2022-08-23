@@ -6,12 +6,10 @@ Python script to help with setting up a remote jupyter server instance on HPC
 
 1. Log in to the cluster
 
-- e.g. `ssh hd_ab213@bwforcluster.bwservices.uni-heidelberg.de`
+- e.g. `ssh hd_ab213@helix.bwservices.uni-heidelberg.de`
 - you'll need to enter an OTP (one time password) as well as your password
-- make sure you can access sds (`ls /mnt/sds-hd/sd19b001`)
-  - if not, `kinit`
 - you should be in the measelab environment (i.e. command line starts with `(measelab)`)
-  - if not, `source /mnt/sds-hd/sd19b001/HPC_INSTALLATION/init.sh`
+  - if not, `source /mnt/sds-hd/sd19b001/HPC_INSTALLATION_HELIX/init.sh`
 
 2. Submit a jupyter lab server job
 
@@ -34,8 +32,8 @@ Python script to help with setting up a remote jupyter server instance on HPC
 ```
 (measelab) [hd_xx123@login3 setup_jupyter]$ setup-jupyter
 Job runtime in hours [1]: 2
-GPU type required (none, any, TITAN, V100, GTX1080, RTX2080, V100, V100S, RTX3090, RTX8000) [any]:
-Number of cpus required [1]: 12
+GPU type required (none, any, A490, A100) [any]:
+Number of cpus required [16]: 12
 Memory required in GB [60]: 60
 
 Submitted 2-hour 12-CPU, 60gb memory, any GPU job with id 787623...job started.
@@ -56,5 +54,5 @@ localhost:57191/?token=0e28e2f990ca9f2d7feadd0daa1bb439eaebaf69a623c738
 
 Note: If step 2 doesn't work in your ssh client, you can instead open a new command line terminal, and create a new ssh connection which forwards the required port with this command: (you will probably have to re-enter your OTP and password though)
 
-ssh -L57191:h11c1111:57191 hd_xx123@bwforcluster.bwservices.uni-heidelberg.de
+ssh -L57191:h11c1111:57191 hd_xx123@helix.bwservices.uni-heidelberg.de
 ```

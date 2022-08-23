@@ -20,7 +20,7 @@ def print_instructions(port, hostname, userid, token):
         "\nNote: If step 2 doesn't work in your ssh client, you can instead open a new command line terminal, and create a new ssh connection which forwards the required port with this command: (you will probably have to re-enter your OTP and password though)"
     )
     print(
-        f"\nssh -L{port}:{hostname}:{port} {userid}@bwforcluster.bwservices.uni-heidelberg.de\n"
+        f"\nssh -L{port}:{hostname}:{port} {userid}@helix.bwservices.uni-heidelberg.de\n"
     )
 
 

@@ -6,7 +6,7 @@ import setup_jupyter.util as util
 @click.command()
 @click.option(
     "--runtime",
-    type=click.IntRange(1, 48),
+    type=click.IntRange(1, 120),
     required=True,
     default=1,
     help="Job runtime in hours",
@@ -19,13 +19,8 @@ import setup_jupyter.util as util
         [
             "none",
             "any",
-            "TITAN",
-            "V100",
-            "GTX1080",
-            "RTX2080",
-            "V100S",
-            "RTX3090",
-            "RTX8000",
+            "A40",
+            "A100",
         ],
         case_sensitive=False,
     ),
@@ -37,16 +32,16 @@ import setup_jupyter.util as util
 )
 @click.option(
     "--cpus",
-    type=click.IntRange(1, 32),
+    type=click.IntRange(1, 64),
     required=True,
-    default=1,
+    default=16,
     help="Number of cpus required",
     show_default=True,
     prompt="Number of cpus required",
 )
 @click.option(
     "--memory",
-    type=click.IntRange(16, 360),
+    type=click.IntRange(16, 2000),
     required=True,
     default=60,
     help="Memory required in GB",
@@ -64,7 +59,9 @@ def submit(runtime, gpu_type, cpus, memory, verbose):
     sbatch_options = "--partition=single"
     with_gpu = gpu_type != "none"
     if with_gpu:
-        sbatch_options = f"--partition=gpu-single --gres=gpu{':1' if gpu_type == 'any' else ':' + gpu_type + ':1'}"
+        sbatch_options += (
+            f" --gres=gpu{':1' if gpu_type == 'any' else ':' + gpu_type + ':1'}"
+        )
     minutes = 60 * runtime
     sbatch_cmd = f"sbatch --parsable -t{minutes} --ntasks-per-node={cpus} --mem={memory}gb {sbatch_options} --output=.setup-jupyter-log.txt setup-jupyter-start"
     if verbose:
