@@ -5,9 +5,6 @@ cd $1
 # init conda
 source miniconda3/etc/profile.d/conda.sh
 
-# workaround for git ssl isse
-export GIT_SSL_NO_VERIFY=true
-
 # clone mease-lab-to-nwb
 git clone https://github.com/ssciwr/mease-lab-to-nwb.git
 cd mease-lab-to-nwb
