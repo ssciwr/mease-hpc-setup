@@ -10,6 +10,9 @@ module load devel/cuda/11.6
 # note matlab 2021a cuda compilation requires gcc <= 9
 module load compiler/gnu/11.3
 
+# workaround for git ssl isse
+export GIT_SSL_NO_VERIFY=true
+
 # tell spikeinterface where sorters are installed
 export KILOSORT_PATH=${MEASE_HPC_INSTALL}/Kilosort-1.0
 export KILOSORT2_PATH=${MEASE_HPC_INSTALL}/Kilosort-2.0
