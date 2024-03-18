@@ -16,6 +16,7 @@ from pathlib import Path
 from pprint import pformat
 import datetime
 
+
 # a print function that timestamps the output
 def tprint(string=""):
     print(f"|| {datetime.datetime.now():%H:%M:%S} || {string}")
